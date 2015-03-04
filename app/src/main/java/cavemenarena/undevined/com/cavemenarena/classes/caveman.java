@@ -13,4 +13,33 @@ public class caveman {
         this.nextAction = 0;
         this.weapon = new stick();
     }
+
+    public int getNextAction() {
+        return this.nextAction;
+    }
+
+    public String getActionString() {
+        return actions.getActionName(this.nextAction);
+    }
+
+    public Boolean setNextAction(int i) {
+        if(actions.checkActionKey(i)) {
+            this.nextAction = i;
+            return true;
+        }
+        return false;
+    }
+
+    public Boolean setNextActionString(String ActionName) {
+        int myAction;
+        myAction = actions.getActionValue(ActionName);
+        if(Integer.compare(myAction, -1) {
+            return false;
+        }
+        return true;
+    }
+
+    public int getStickSharpness() {
+        return this.weapon.getSharpness();
+    }
 }

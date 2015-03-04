@@ -11,7 +11,7 @@ public class stick {
     }
 
     public int getSharpness() {
-        return sharpness;
+        return this.sharpness;
     }
 
     public void sharpen() {
