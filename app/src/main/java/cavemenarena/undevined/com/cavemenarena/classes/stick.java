@@ -1,0 +1,35 @@
+package cavemenarena.undevined.com.cavemenarena.classes;
+
+/**
+ * Created by sleephead on 04.03.15.
+ */
+public class stick {
+    int sharpness;
+
+    public stick() {
+        this.sharpness = 0;
+    }
+
+    public int getSharpness() {
+        return sharpness;
+    }
+
+    public void sharpen() {
+        this.sharpness++;
+    }
+
+    public void abrade() {
+        if(this.sharpness > 0) {
+            this.sharpness--;
+        }
+    }
+
+    public boolean isSword() {
+        if(this.sharpness > 4) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+}
