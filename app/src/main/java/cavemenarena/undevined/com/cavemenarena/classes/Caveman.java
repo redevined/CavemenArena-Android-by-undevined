@@ -3,15 +3,17 @@ package cavemenarena.undevined.com.cavemenarena.classes;
 /**
  * Created by sleephead on 04.03.15.
  */
-public class caveman {
+public class Caveman {
     int health;
-    stick weapon;
+    Stick weapon;
     int nextAction;
+    String name;
 
-    public caveman() {
+    public Caveman(String playername) {
         this.health = 1;
         this.nextAction = 0;
-        this.weapon = new stick();
+        this.weapon = new Stick();
+        this.name = playername;
     }
 
     public int getNextAction() {
@@ -19,11 +21,11 @@ public class caveman {
     }
 
     public String getActionString() {
-        return actions.getActionName(this.nextAction);
+        return Actions.getActionName(this.nextAction);
     }
 
     public Boolean setNextAction(int i) {
-        if(actions.checkActionKey(i)) {
+        if(Actions.checkActionKey(i)) {
             this.nextAction = i;
             return true;
         }
@@ -32,7 +34,8 @@ public class caveman {
 
     public Boolean setNextActionString(String ActionName) {
         int myAction;
-        myAction = actions.getActionValue(ActionName);
+        myAction = Actions.getActionValue(ActionName);
+
         if(myAction == -1) {
             return false;
         }
@@ -41,5 +44,13 @@ public class caveman {
 
     public int getStickSharpness() {
         return this.weapon.getSharpness();
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

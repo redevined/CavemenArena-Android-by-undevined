@@ -3,10 +3,10 @@ package cavemenarena.undevined.com.cavemenarena.classes;
 /**
  * Created by sleephead on 04.03.15.
  */
-public class stick {
+public class Stick {
     int sharpness;
 
-    public stick() {
+    public Stick() {
         this.sharpness = 0;
     }
 
