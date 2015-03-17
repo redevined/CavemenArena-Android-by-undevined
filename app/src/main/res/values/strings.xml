@@ -3,5 +3,7 @@
 
     <string name="play_button">Play</string>
     <string name="howto_button">How To</string>
+
+    <string name="title_activity_game">GameActivity</string>
 </resources>
 

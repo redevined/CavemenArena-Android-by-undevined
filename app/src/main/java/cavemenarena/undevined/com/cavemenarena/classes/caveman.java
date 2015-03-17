@@ -33,7 +33,7 @@ public class caveman {
     public Boolean setNextActionString(String ActionName) {
         int myAction;
         myAction = actions.getActionValue(ActionName);
-        if(Integer.compare(myAction, -1) {
+        if(myAction == -1) {
             return false;
         }
         return true;

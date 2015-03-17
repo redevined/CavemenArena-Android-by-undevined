@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
 
 
 /**
@@ -108,5 +109,9 @@ public class StartActivity extends Activity {
     public void gotoHowTo() {
         howtoView.setVisibility(View.VISIBLE);
         startView.setVisibility(View.GONE);
+    }
+
+    public void gotoGame(View v){
+        startActivity(new Intent(this, GameActivity.class));
     }
 }
