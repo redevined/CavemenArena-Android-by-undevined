@@ -7,20 +7,31 @@ import java.util.Map;
  * Created by sleephead on 04.03.15.
  */
 public final class Actions {
-    private static Map<Integer, String> actionname = new HashMap<Integer, String>();
+    //private static Map<Integer, String> actionname = new HashMap<Integer, String>();
+
+    /**
+     * sharpen the weapon
+     */
+    public static final int SHARPEN = 0;
+    /**
+     * attack the enemy
+     */
+    public static final int POKE = 1;
+    /**
+     * block an atack
+     */
+    public static final int BLOCK = 2;
+
 
     private Actions() {
-        actionname.put(new Integer(0), "sharpen");
-        actionname.put(new Integer(1), "attack");
-        actionname.put(new Integer(2), "defend");
     }
 
-    public static void init(){
-        actionname.put(new Integer(0), "sharpen");
-        actionname.put(new Integer(1), "attack");
-        actionname.put(new Integer(2), "defend");
-     }
-
+    //public static void init(){
+    //    actionname.put(new Integer(0), "sharpen");
+    //    actionname.put(new Integer(1), "poke");
+    //    actionname.put(new Integer(2), "block");
+    // }
+    /*
     public static String getActionName(int i) {
 
         return actionname.get(new Integer(i));
@@ -35,14 +46,18 @@ public final class Actions {
             return (int)entry.getKey();
         }
         return -1;
-      }
+      }*/
     public static Boolean checkActionKey(int key) {
-
-        if (actionname.containsKey(key)) {
-            return true;
-        } else {
-            return false;
+        switch(key) {
+            case SHARPEN:
+                return true;
+            case POKE:
+                return true;
+            case BLOCK:
+                return true;
         }
+        return false;
+
     }
 }
 
