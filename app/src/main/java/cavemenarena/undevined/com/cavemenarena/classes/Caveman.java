@@ -13,7 +13,7 @@ public class Caveman {
      */
     public static final int POKE = 1;
     /**
-     * block an atack
+     * block an attack
      */
     public static final int BLOCK = 2;
     int health;

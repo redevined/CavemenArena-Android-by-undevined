@@ -10,36 +10,32 @@ public class Cave {
 
     private Caveman player1;
     private Caveman player2;
-    private Boolean isKI;
+    private AI cpu;
 
-    private List historyPlayer1;
-    private List historyPlayer2;
+    private List<Integer> historyPlayer1;
+    private List<Integer> historyPlayer2;
 
+    /*
     public Cave(String player1Name, String player2Name){
-        this.generallInit(player1Name);
+        this.generalInit(player1Name, player2Name);
         this.player2 = new Caveman(player2Name);
-        this.isKI = false;
-
-
     }
+    */
 
     public Cave(String player1Name, String player2Name, int level){
-        this.generallInit(player1Name);
-        this.player2 = new AI(level);
-        this.isKI = true;
-
-
+        this.generalInit(player1Name, player2Name);
+        this.cpu = new AI(level);
     }
 
-    private void generallInit(String player1Name){
+    private void generalInit(String player1Name, String player2Name){
         this.player1 = new Caveman(player1Name);
-        this.historyPlayer1 = new ArrayList();
-        this.historyPlayer2 = new ArrayList();
+        this.player2 = new Caveman(player2Name);
+        this.historyPlayer1 = new ArrayList<Integer>();
+        this.historyPlayer2 = new ArrayList<Integer>();
     }
 
     public void setPlayerAction(int action){
         player1.setNextAction(action);
-        //player2.setNextAction(KI.generateAction());
         this.playRound();
     }
 
@@ -48,13 +44,10 @@ public class Cave {
         int player2Action;
 
         player1Action = player1.getNextAction();
-        if(this.isKI){
-           player2Action = player2.getAction(historyPlayer1, historyPlayer2);
-
+        if(this.cpu != null){
+            player2.setNextAction(cpu.getAction(historyPlayer1, historyPlayer2));
         }
-        else {
-            player2Action = player2.getNextAction();
-        }
+        player2Action = player2.getNextAction();
 
         historyPlayer1.add(player1Action);
         historyPlayer2.add(player2Action);
