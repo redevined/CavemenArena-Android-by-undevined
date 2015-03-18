@@ -4,13 +4,11 @@ import cavemenarena.undevined.com.cavemenarena.util.SystemUiHider;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Button;
 
 
 /**
@@ -19,7 +17,7 @@ import android.widget.Button;
  *
  * @see SystemUiHider
  */
-public class StartActivity extends Activity {
+public class GameActivity extends Activity {
     /**
      * Whether or not the system UI should be auto-hidden after
      * {@link #AUTO_HIDE_DELAY_MILLIS} milliseconds.
@@ -48,19 +46,28 @@ public class StartActivity extends Activity {
      */
     private SystemUiHider mSystemUiHider;
 
-    final View startView = findViewById(R.id.startView);
-    final View howtoView = findViewById(R.id.howtoView);
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_start);
+        setContentView(R.layout.activity_game);
 
-        howtoView.setVisibility(View.GONE);
-        startView.setVisibility(View.VISIBLE);
+        mSystemUiHider.setup();
+        mSystemUiHider
+                .setOnVisibilityChangeListener(new SystemUiHider.OnVisibilityChangeListener() {
+                    // Cached values.
+                    int mControlsHeight;
+                    int mShortAnimTime;
 
-
+                    @Override
+                    @TargetApi(Build.VERSION_CODES.HONEYCOMB_MR2)
+                    public void onVisibilityChange(boolean visible) {
+                        if (visible && AUTO_HIDE) {
+                            // Schedule a hide().
+                            delayedHide(AUTO_HIDE_DELAY_MILLIS);
+                        }
+                    }
+                });
     }
 
     @Override
@@ -104,14 +111,5 @@ public class StartActivity extends Activity {
     private void delayedHide(int delayMillis) {
         mHideHandler.removeCallbacks(mHideRunnable);
         mHideHandler.postDelayed(mHideRunnable, delayMillis);
-    }
-
-    public void gotoHowTo() {
-        howtoView.setVisibility(View.VISIBLE);
-        startView.setVisibility(View.GONE);
-    }
-
-    public void gotoGame(View v){
-        startActivity(new Intent(this, GameActivity.class));
     }
 }
