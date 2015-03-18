@@ -111,7 +111,7 @@ public class Cave {
 
         if (other.stickIsSword()) {
             one.kill();
-        } else {
+        } else if(!other.weaponIsBlunt()){
             one.loseHealth();
         }
 

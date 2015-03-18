@@ -98,4 +98,10 @@ public class Caveman {
         }
         return false;
     }
+    public boolean weaponIsBlunt(){
+        if(this.weapon.getSharpness() == 0){
+            return true;
+        }
+        return false;
+    }
 }
