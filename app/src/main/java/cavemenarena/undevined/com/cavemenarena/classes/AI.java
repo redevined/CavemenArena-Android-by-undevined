@@ -36,20 +36,6 @@ public class AI {
     public class SimpleBrain extends Brain {
         @Override
         public int thinkAboutIt(List<Integer> ownHist, List<Integer> enemyHist) {
-            Random randGen = new Random();
-
-            int action = randGen.nextInt(3);
-
-            return action;
-        }
-    }
-
-    /**
-     * Medium AI, middle difficulty
-     */
-    public class MediumBrain extends Brain {
-        @Override
-        public int thinkAboutIt(List<Integer> ownHist, List<Integer> enemyHist) {
             int ownSharpness = calcSharpness(ownHist);
             int enemySharpness = calcSharpness(enemyHist);
             int ownLastMove = calcLastMove(ownHist);
@@ -61,6 +47,46 @@ public class AI {
                     action = Actions.POKE;
                 } else if (enemySharpness > 0 && ownLastMove != 2) {
                     action = Actions.BLOCK;
+                }
+            }
+
+            return action;
+        }
+    }
+
+    /**
+     * Medium AI, average difficulty
+     */
+    public class MediumBrain extends Brain {
+        @Override
+        public int thinkAboutIt(List<Integer> ownHist, List<Integer> enemyHist) {
+            int ownSharpness = calcSharpness(ownHist);
+            int enemySharpness = calcSharpness(enemyHist);
+            int ownLastMove = calcLastMove(ownHist);
+            Random randGen = new Random();
+
+            int action = Actions.SHARPEN;
+
+            if (ownSharpness == 0) {
+                if (0 < enemySharpness && enemySharpness < 5) {
+                    if (randGen.nextBoolean()) {
+                        action = Actions.BLOCK;
+                    }
+                }
+            } else if (0 < ownSharpness && ownSharpness < 5){
+                if (randGen.nextBoolean()) {
+                    action = Actions.POKE;
+                }
+                if (0 < enemySharpness && enemySharpness < 5) {
+                    if (ownSharpness < enemySharpness) {
+                        if (randGen.nextBoolean()) {
+                            action = Actions.BLOCK;
+                        }
+                    }
+                }
+            } else if (ownSharpness >= 5) {
+                if (randGen.nextBoolean()) {
+                    action = Actions.POKE;
                 }
             }
 
