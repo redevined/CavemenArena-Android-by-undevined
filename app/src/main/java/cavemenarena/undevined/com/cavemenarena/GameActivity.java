@@ -52,7 +52,7 @@ public class GameActivity extends Activity {
 
         setContentView(R.layout.activity_game);
 
-        mSystemUiHider.setup();
+        /*mSystemUiHider.setup();
         mSystemUiHider
                 .setOnVisibilityChangeListener(new SystemUiHider.OnVisibilityChangeListener() {
                     // Cached values.
@@ -67,7 +67,8 @@ public class GameActivity extends Activity {
                             delayedHide(AUTO_HIDE_DELAY_MILLIS);
                         }
                     }
-                });
+                });*/
+
     }
 
     @Override

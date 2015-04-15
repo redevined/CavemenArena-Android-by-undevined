@@ -10,6 +10,8 @@
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
 
+    <string name="difficultyLevel">Schwierigkeitsstufe</string>
+
     <string name="howToTitle">How To</string>
     <string name="howToPart1">Hier noch schreiben, was der Benutzer machen muss</string>
 </resources>

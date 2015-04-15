@@ -10,7 +10,11 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.widget.Button;
+
+import static android.content.DialogInterface.OnClickListener;
 
 
 /**
@@ -19,7 +23,7 @@ import android.widget.Button;
  *
  * @see SystemUiHider
  */
-public class StartActivity extends Activity {
+public class StartActivity extends Activity implements OnClickListener {
     /**
      * Whether or not the system UI should be auto-hidden after
      * {@link #AUTO_HIDE_DELAY_MILLIS} milliseconds.
@@ -102,9 +106,17 @@ public class StartActivity extends Activity {
         mHideHandler.postDelayed(mHideRunnable, delayMillis);
     }
 
-
-    public void gotoGame(View v){
-        startActivity(new Intent(this, GameActivity.class));
+    /**
+     * Ruft den Dialog auf, in dem der Benutzer die Schwierigkeitsstufe wählen und das Spiel starten kann
+     *
+     * @param v
+     */
+    public void gotoGame(View v)
+    {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(R.string.difficultyLevel).setItems(R.array.levels, this);
+        builder.create();
+        builder.show();
     }
 
     /**
@@ -114,5 +126,20 @@ public class StartActivity extends Activity {
      */
     public void gotoHowTo(View view) {
         this.startActivity(new Intent(this, HowToActivity.class));
+    }
+
+    /**
+     * Wird nach der Auswahl der Schwierigkeitsstufe aufgerufen und startet das Spiel
+     *
+     * @param dialog Dialog, von dem der Benutzer die Schwierigkeitsstufe ausgewählt hat
+     * @param level  Vom Benutzer gewählte Schwierigeitsstufe
+     */
+    public void onClick(DialogInterface dialog, int level)
+    {
+        Intent gameActivityIntent = new Intent(this, GameActivity.class);
+        // Schwierigkeitsstufe (von 1 bis 3) -> 0 ist 1
+        gameActivityIntent.putExtra("level", level + 1);
+
+        this.startActivity(gameActivityIntent);
     }
 }
