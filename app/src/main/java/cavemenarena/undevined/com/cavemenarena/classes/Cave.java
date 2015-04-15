@@ -3,6 +3,8 @@ package cavemenarena.undevined.com.cavemenarena.classes;
 import java.util.ArrayList;
 import java.util.List;
 
+import cavemenarena.undevined.com.cavemenarena.StartActivity;
+
 /**
  * Created by sleephead on 17.03.15.
  */
@@ -34,12 +36,15 @@ public class Cave {
         this.historyPlayer2 = new ArrayList<Integer>();
     }
 
-    public void setPlayerAction(int action){
+    public Boolean setPlayerAction(int action){
         player1.setNextAction(action);
-        this.playRound();
+        if(this.playRound())
+            return true;
+        else
+            return false;
     }
 
-    private void playRound() {
+    private Boolean playRound() {
         int player1Action;
         int player2Action;
 
@@ -105,6 +110,10 @@ public class Cave {
                 break;
 
         }
+        if(player1.isDead() || player2.isDead())
+            return true;
+        else
+            return false;
     }
 
     private void sharpenPoke(Caveman one, Caveman other){
