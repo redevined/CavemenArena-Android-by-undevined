@@ -4,18 +4,18 @@ package cavemenarena.undevined.com.cavemenarena.classes;
  * Created by sleephead on 04.03.15.
  */
 public class Caveman {
-    /**
-     * sharpen the weapon
-     */
-    public static final int SHARPEN = 0;
-    /**
-     * attack the enemy
-     */
-    public static final int POKE = 1;
-    /**
-     * block an attack
-     */
-    public static final int BLOCK = 2;
+    ///**
+    // * sharpen the weapon
+    // */
+    //public static final int SHARPEN = 0;
+    ///**
+    // * attack the enemy
+    // */
+    //public static final int POKE = 1;
+    ///**
+    // * block an attack
+    // */
+    //public static final int BLOCK = 2;
     private int health;
     private Stick weapon;
     private int nextAction;
@@ -37,7 +37,7 @@ public class Caveman {
     //}
 
     public Boolean setNextAction(int i) {
-        if(i == SHARPEN || i == POKE|| i==BLOCK) {
+        if(Actions.checkActionKey(i)) {
             this.nextAction = i;
             return true;
         }

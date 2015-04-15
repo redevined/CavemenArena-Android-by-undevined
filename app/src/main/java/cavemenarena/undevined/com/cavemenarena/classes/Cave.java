@@ -53,26 +53,26 @@ public class Cave {
         historyPlayer2.add(player2Action);
 
         switch (player1Action) {
-            case Caveman.SHARPEN:
+            case Actions.SHARPEN:
                 switch (player2Action) {
-                    case Caveman.SHARPEN:
+                    case Actions.SHARPEN:
                         this.player1.sharpenStick();
                         this.getPlayer2().sharpenStick();
                         break;
-                    case Caveman.POKE:
+                    case Actions.POKE:
                         this.sharpenPoke(player1, player2);
                         break;
-                    case Caveman.BLOCK:
+                    case Actions.BLOCK:
                         this.sharpenBlock(player1, player2);
                         break;
                 }
                 break;
-            case Caveman.POKE:
+            case Actions.POKE:
                 switch (player2Action) {
-                    case Caveman.SHARPEN:
+                    case Actions.SHARPEN:
                         this.sharpenPoke(player2, player1);
                         break;
-                    case Caveman.POKE:
+                    case Actions.POKE:
                         this.player1.abradeStick();
                         this.player2.abradeStick();
                         if ((player1.stickIsSword() && !player2.stickIsSword())) {
@@ -84,21 +84,21 @@ public class Cave {
 
                         }
                         break;
-                    case Caveman.BLOCK:
+                    case Actions.BLOCK:
                         this.pokeBlock(player1, player2);
                         break;
                 }
                 break;
-            case Caveman.BLOCK:
+            case Actions.BLOCK:
                 switch (player2Action) {
-                    case Caveman.SHARPEN:
+                    case Actions.SHARPEN:
                         this.sharpenBlock(player2, player1);
                         break;
-                    case Caveman.POKE:
+                    case Actions.POKE:
                         this.pokeBlock(player2, player1);
                         break;
 
-                    case Caveman.BLOCK:
+                    case Actions.BLOCK:
                         break;
 
                 }
