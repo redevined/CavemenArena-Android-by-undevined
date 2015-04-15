@@ -28,7 +28,7 @@
             android:name=".HowToActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_how_to"
-            android:theme="@style/FullscreenTheme" >
+            android:theme="@android:style/Theme.NoTitleBar">
         </activity>
     </application>
 

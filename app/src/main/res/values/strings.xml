@@ -6,8 +6,11 @@
 
     <string name="title_activity_game">GameActivity</string>
 
-    <string name="title_activity_how_to">HowToActivity</string>
+    <string name="title_activity_how_to">How To</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
+
+    <string name="howToTitle">How To</string>
+    <string name="howToPart1">Hier noch schreiben, was der Benutzer machen muss</string>
 </resources>
 
