@@ -48,14 +48,19 @@ public class StartActivity extends Activity {
      */
     private SystemUiHider mSystemUiHider;
 
-    final View startView = findViewById(R.id.startView);
-    final View howtoView = findViewById(R.id.howtoView);
+    View startView;
+    View howtoView;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_start);
+
+        startView = findViewById(R.id.startView);
+        howtoView = findViewById(R.id.howtoView);
+
 
         howtoView.setVisibility(View.GONE);
         startView.setVisibility(View.VISIBLE);
@@ -93,7 +98,7 @@ public class StartActivity extends Activity {
     Runnable mHideRunnable = new Runnable() {
         @Override
         public void run() {
-            mSystemUiHider.hide();
+            //mSystemUiHider.hide();
         }
     };
 

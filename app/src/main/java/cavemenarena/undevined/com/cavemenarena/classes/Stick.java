@@ -4,7 +4,7 @@ package cavemenarena.undevined.com.cavemenarena.classes;
  * Created by sleephead on 04.03.15.
  */
 public class Stick {
-    int sharpness;
+    private int sharpness;
 
     public Stick() {
         this.sharpness = 0;

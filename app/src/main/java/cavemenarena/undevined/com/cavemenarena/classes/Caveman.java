@@ -16,10 +16,10 @@ public class Caveman {
      * block an attack
      */
     public static final int BLOCK = 2;
-    int health;
-    Stick weapon;
-    int nextAction;
-    String name;
+    private int health;
+    private Stick weapon;
+    private int nextAction;
+    private String name;
 
     public Caveman(String playername) {
         this.health = 1;
