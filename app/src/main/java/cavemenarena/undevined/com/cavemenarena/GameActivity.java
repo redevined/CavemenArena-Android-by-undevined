@@ -1,5 +1,8 @@
 package cavemenarena.undevined.com.cavemenarena;
 
+import cavemenarena.undevined.com.cavemenarena.classes.Cave;
+import cavemenarena.undevined.com.cavemenarena.classes.Caveman;
+import cavemenarena.undevined.com.cavemenarena.classes.Sprite;
 import cavemenarena.undevined.com.cavemenarena.util.SystemUiHider;
 
 import android.annotation.TargetApi;
@@ -9,6 +12,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ImageView;
 
 
 /**
@@ -46,11 +50,24 @@ public class GameActivity extends Activity {
      */
     private SystemUiHider mSystemUiHider;
 
+    private Cave game;
+    private Sprite player1Sprite;
+    private Sprite player2Sprite;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_game);
+
+        this.game = new Cave("Dumbo", "The Destroyer", 2);
+        Caveman player1 = this.game.getPlayer1();
+        Caveman player2 = this.game.getPlayer2();
+        ImageView view1 = (ImageView)findViewById(R.id.player1);
+        ImageView view2 = (ImageView)findViewById(R.id.player2);
+
+        this.player1Sprite = new Sprite(player1, player2, view1);
+        this.player2Sprite = new Sprite(player2, player1, view2);
 
         /*mSystemUiHider.setup();
         mSystemUiHider
