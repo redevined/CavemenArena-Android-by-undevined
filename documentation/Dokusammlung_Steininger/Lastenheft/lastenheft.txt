@@ -1,0 +1,51 @@
+Cavemen Arena
+=============
+
+by undevined (Aljoscha, Nico, Ralf, Oliver)
+-------------------------------------------
+
+
+
+Ziel unsereres Projekts ist die Konzipierung und Erstellung einer Android-App. Deren Inhalt ist ein Spiel das auf einem Stackoverflow-Contest basiert.
+
+
+Spielprinzip
+------------
+
+Grundidee des Spiels sind zwei sich bekämpfende Höhlenmenschen, die aus evolutionstechnischen Gründen nur einen begrenzten Intelligenzquotienten besitzen. Daher können sie in ihrem Kampf auf Leben und Tod nur aus drei Aktionen wählen: Zuschlagen ("Poke"), Blocken ("Block") oder Stock schärfen ("Sharpen"). Leider haben die Höhlenmenschen auch keine sonderlich gute Ausdauer und gehen daher schon nach einem Treffer mit einem scharfen Stock zu Boden, solange der Schlag nicht geblockt wird.
+
+Ein Stock gilt als scharf solange seine Schärfe größer null ist. Bei einem Angriff verliert die Waffe des angreifenden Spielers an Schärfe. In dem Fall dass beide Spieler gleichzeitig angreifen, werden beide Schläge abgeblockt. Sollte einer der Höhlenmenschen es jedoch schaffen, seinen Stock bis zu Stufe 5 oder höher zu schärfen, so gilt dieser Stock als Schwert und kann nicht mehr geblockt werden.
+
+Das Spiel verläuft rundenbasiert, wobei eine Runde ausgetragen wird, sobald beide Spieler ihre Aktion gewählt haben.
+
+
+Aufteilung
+----------
+
+Core:
+- Spielmechanik
+  - Auswahl Schwierigkeitsstufe
+  - Spiel
+    - Aktionsauswahl
+    - Rundenabwicklung
+- Menüs
+  - Hauptmenü
+    - Buttons: Play, How-To-Play (Multiplayer, Highscores)
+  - Play -> Schwierigkeitsstufe auswählen -> Spiel starten
+  - How-To-Play -> Spielregeln
+- Grafikdesign / Animationen
+  - Höhlenmenschen
+  - Stöcke
+  - Buttons
+  - Hintergrund
+- KI (Bots)
+  - Schwierigkeitsstufen
+    - Leicht
+    - Mittel
+    - Schwer
+
+Optional:
+- Mehrspieler über Bluetooth
+- Highscores
+
+
