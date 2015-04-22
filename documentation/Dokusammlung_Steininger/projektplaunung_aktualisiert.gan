@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><project name="Untitled Gantt Project" company="" webLink="http://" view-date="2015-03-02" view-index="1" gantt-divider-location="353" resource-divider-location="300" version="2.7" locale="de_AT">
+<?xml version="1.0" encoding="UTF-8"?><project name="Untitled Gantt Project" company="" webLink="http://" view-date="2015-04-04" view-index="0" gantt-divider-location="353" resource-divider-location="300" version="2.7" locale="de">
     <description/>
     <view zooming-state="default:2" id="gantt-chart">
         <field id="tpd3" name="Vorgang" width="57" order="0"/>
@@ -6,8 +6,8 @@
         <field id="tpd5" name="Ende" width="21" order="2"/>
     </view>
     <view id="resource-table">
-        <field id="0" name="Ressource" width="56" order="0"/>
-        <field id="1" name="Rolle" width="43" order="1"/>
+        <field id="0" name="Ressource" width="50" order="0"/>
+        <field id="1" name="Rolle" width="49" order="1"/>
     </view>
     <!-- -->
     <calendars>
@@ -36,13 +36,13 @@
         <task id="0" name="UML" color="#8cb6ce" meeting="false" start="2015-03-03" duration="2" complete="10" expand="true">
             <depend id="1" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="1" name="Programmieren" color="#8cb6ce" meeting="false" start="2015-03-05" duration="16" complete="0" expand="true">
+        <task id="1" name="Programmieren" color="#8cb6ce" meeting="false" start="2015-03-05" duration="34" complete="0" expand="true">
             <depend id="2" type="2" difference="0" hardness="Strong"/>
             <depend id="3" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="2" name="Test" color="#8cb6ce" meeting="false" start="2015-03-27" duration="14" complete="0" expand="true"/>
-        <task id="3" name="Präsentation" color="#8cb6ce" meeting="false" start="2015-03-27" duration="14" complete="0" expand="true"/>
-        <task id="4" name="Dokumentation" color="#8cb6ce" meeting="false" start="2015-03-03" duration="32" complete="10" expand="true"/>
+        <task id="2" name="Test" color="#8cb6ce" meeting="false" start="2015-04-22" duration="5" complete="0" expand="true"/>
+        <task id="3" name="Präsentation" color="#8cb6ce" meeting="false" start="2015-04-22" duration="5" complete="0" expand="true"/>
+        <task id="4" name="Dokumentation" color="#8cb6ce" meeting="false" start="2015-03-03" duration="41" complete="10" expand="true"/>
     </tasks>
     <resources>
         <resource id="0" name="Oliver Wirth" function="Default:0" contacts="wirtholiv@gmail.com" phone=""/>

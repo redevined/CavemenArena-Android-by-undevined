@@ -1,0 +1,59 @@
+MPX;Microsoft Project for Windows;4.0;ANSI
+10;€;2;2;.;,
+11;2;0;1;8,00;40,00;10,00 €/h;15,00 €/h;1;0
+12;1;1;480;.;:;;;9;9
+20;Standard;0;1;1;1;1;1;0
+25;1
+25;2;08:00;12:00;13:00;17:00
+25;3;08:00;12:00;13:00;17:00
+25;4;08:00;12:00;13:00;17:00
+25;5;08:00;12:00;13:00;17:00
+25;6;08:00;12:00;13:00;17:00
+25;7
+30;Project1;;;Standard;Di 03.03.15;Di 28.04.15;0;Mi 22.04.15;;0,00 €;0,00 €;0,00 €;0h;0h;0h;0%;0t;0t;0t;0%;;;;;0t;0t
+40;Name;E-Mail-Adresse;Nr.;Einmalige Nr.
+41;1;11;40;49
+50;Oliver Wirth;wirtholiv@gmail.com;1;1
+50;Nico Weber;nicowe12@yahoo.de;2;2
+50;Ralf Frommherz;ralf@ralf-frommherz.de;3;3
+50;Aljoscha Steininger;aljoscha@frequenzwalze.org;4;4
+60;Name;PSP-Code;Gliederungsebene;Kosten;Dauer;Aktuelle Dauer;Verbleibende Dauer;% Abgeschlossen;Anfang;Ende;Vorgänger;Fest;Meilenstein;Nr.;Einschränkungsart;Priorität;Einmalige Nr.;Gliederungsnummer
+61;1;2;3;30;40;42;43;44;50;51;70;80;81;90;91;95;98;99
+70;;0;0;;57t;;;;Di 03.03.15;Di 28.04.15;;Nein;;0;So früh wie möglich;;0;0
+70;UML;1;1;0,00 €;2t;0,2t;1,8t;10%;Di 03.03.15;Mi 04.03.15;;Nein;Nein;1;So früh wie möglich;Mittel;5;1
+75;1;0,16;2t;;0,03t;;;;;Di 03.03.15;Mi 04.03.15;;1
+76;;0;0;NV;NV
+75;2;0,16;2t;;0,03t;;;;;Di 03.03.15;Mi 04.03.15;;2
+76;;0;0;NV;NV
+75;3;0,34;2t;;0,07t;;;;;Di 03.03.15;Mi 04.03.15;;3
+76;;0;0;NV;NV
+75;4;0,34;2t;;0,07t;;;;;Di 03.03.15;Mi 04.03.15;;4
+76;;0;0;NV;NV
+70;Programmieren;2;1;0,00 €;34t;0t;34t;0%;Do 05.03.15;Di 21.04.15;1;Nein;Nein;2;So früh wie möglich;Mittel;1;2
+75;1;0,34;34t;;0t;;;;;Do 05.03.15;Di 21.04.15;;1
+76;;0;0;NV;NV
+75;2;0,34;34t;;0t;;;;;Do 05.03.15;Di 21.04.15;;2
+76;;0;0;NV;NV
+75;3;0,16;34t;;0t;;;;;Do 05.03.15;Di 21.04.15;;3
+76;;0;0;NV;NV
+75;4;0,16;34t;;0t;;;;;Do 05.03.15;Di 21.04.15;;4
+76;;0;0;NV;NV
+70;Test;3;1;0,00 €;5t;0t;5t;0%;Mi 22.04.15;Di 28.04.15;2;Nein;Nein;3;So früh wie möglich;Mittel;2;3
+75;1;0,5;5t;;0t;;;;;Mi 22.04.15;Di 28.04.15;;1
+76;;0;0;NV;NV
+75;2;0,5;5t;;0t;;;;;Mi 22.04.15;Di 28.04.15;;2
+76;;0;0;NV;NV
+70;Präsentation;4;1;0,00 €;5t;0t;5t;0%;Mi 22.04.15;Di 28.04.15;2;Nein;Nein;4;So früh wie möglich;Mittel;3;4
+75;3;0,5;5t;;0t;;;;;Mi 22.04.15;Di 28.04.15;;3
+76;;0;0;NV;NV
+75;4;0,5;5t;;0t;;;;;Mi 22.04.15;Di 28.04.15;;4
+76;;0;0;NV;NV
+70;Dokumentation;5;1;0,00 €;41t;4,1t;36,9t;10%;Di 03.03.15;Di 28.04.15;;Nein;Nein;5;So früh wie möglich;Mittel;4;5
+75;1;0,25;41t;;1,02t;;;;;Di 03.03.15;Di 28.04.15;;1
+76;;0;0;NV;NV
+75;2;0,25;41t;;1,02t;;;;;Di 03.03.15;Di 28.04.15;;2
+76;;0;0;NV;NV
+75;3;0,25;41t;;1,02t;;;;;Di 03.03.15;Di 28.04.15;;3
+76;;0;0;NV;NV
+75;4;0,25;41t;;1,02t;;;;;Di 03.03.15;Di 28.04.15;;4
+76;;0;0;NV;NV
