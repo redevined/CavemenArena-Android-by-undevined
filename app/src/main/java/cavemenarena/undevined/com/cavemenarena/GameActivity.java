@@ -1,5 +1,7 @@
 package cavemenarena.undevined.com.cavemenarena;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import cavemenarena.undevined.com.cavemenarena.classes.Cave;
 import cavemenarena.undevined.com.cavemenarena.classes.Caveman;
 import cavemenarena.undevined.com.cavemenarena.classes.Sprite;
@@ -13,6 +15,9 @@ import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 
 /**
@@ -50,9 +55,29 @@ public class GameActivity extends Activity {
      */
     private SystemUiHider mSystemUiHider;
 
+    private class SpriteAnimation extends TimerTask {
+
+        @Override
+        public void run() {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    ImageView view1 = (ImageView)findViewById(R.id.player1);
+                    Bitmap frame1 = player1Sprite.getFrame();
+                    view1.setImageBitmap(frame1);
+
+                    ImageView view2 = (ImageView)findViewById(R.id.player2);
+                    Bitmap frame2 = player2Sprite.getFrame();
+                    view2.setImageBitmap(frame2);
+                }
+            });
+        }
+    }
+
     private Cave game;
     private Sprite player1Sprite;
     private Sprite player2Sprite;
+    private Timer spriteTimer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,14 +85,16 @@ public class GameActivity extends Activity {
 
         setContentView(R.layout.activity_game);
 
-        this.game = new Cave("Dumbo", "The Destroyer", 2);
+        this.game = new Cave("Player", "CPU", 2);
         Caveman player1 = this.game.getPlayer1();
         Caveman player2 = this.game.getPlayer2();
-        ImageView view1 = (ImageView)findViewById(R.id.player1);
-        ImageView view2 = (ImageView)findViewById(R.id.player2);
+        Bitmap spritesheet = BitmapFactory.decodeResource(getResources(), R.drawable.spritesheet_caveman_32x32);
 
-        this.player1Sprite = new Sprite(player1, player2, view1);
-        this.player2Sprite = new Sprite(player2, player1, view2);
+        this.player1Sprite = new Sprite(player1, player2, spritesheet);
+        this.player2Sprite = new Sprite(player2, player1, spritesheet);
+
+        this.spriteTimer = new Timer();
+        this.spriteTimer.scheduleAtFixedRate(new SpriteAnimation(), 0, 333);
 
         /*mSystemUiHider.setup();
         mSystemUiHider
@@ -88,6 +115,7 @@ public class GameActivity extends Activity {
 
     }
 
+    /*
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
@@ -99,11 +127,11 @@ public class GameActivity extends Activity {
     }
 
 
-    /**
+
      * Touch listener to use for in-layout UI controls to delay hiding the
      * system UI. This is to prevent the jarring behavior of controls going away
      * while interacting with activity UI.
-     */
+
     View.OnTouchListener mDelayHideTouchListener = new View.OnTouchListener() {
         @Override
         public boolean onTouch(View view, MotionEvent motionEvent) {
@@ -122,12 +150,13 @@ public class GameActivity extends Activity {
         }
     };
 
-    /**
+
      * Schedules a call to hide() in [delay] milliseconds, canceling any
      * previously scheduled calls.
-     */
+
     private void delayedHide(int delayMillis) {
         mHideHandler.removeCallbacks(mHideRunnable);
         mHideHandler.postDelayed(mHideRunnable, delayMillis);
     }
+    */
 }

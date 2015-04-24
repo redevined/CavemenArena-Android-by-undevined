@@ -1,7 +1,8 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:background="@drawable/howtobackground_1920"
-    tools:context="cavemenarena.undevined.com.cavemenarena.HowToActivity">
+    android:layout_height="match_parent"
+             tools:context="cavemenarena.undevined.com.cavemenarena.HowToActivity"
+             android:background="@drawable/background">
 
     <!-- This FrameLayout insets its children based on system windows using
          android:fitsSystemWindows. -->

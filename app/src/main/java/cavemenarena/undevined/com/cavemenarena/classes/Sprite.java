@@ -6,6 +6,7 @@ import android.widget.ImageView;
 
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.logging.Logger;
 
 /**
  * Created by oliver on 16.04.15.
@@ -14,29 +15,22 @@ public class Sprite {
 
     Caveman caveman;
     Caveman caveman2;
-    ImageView surface;
     Bitmap spritesheet;
     String action;
-    Integer state;
+    int state;
 
-    public Sprite(Caveman self, Caveman other, ImageView view) {
+    public Sprite(Caveman self, Caveman other, Bitmap sheet) {
         this.caveman = self;
         this.caveman2 = other;
-        this.surface = view;
-        this.spritesheet = BitmapFactory.decodeFile("@drawable/spritesheet_caveman_32x32");
+        this.spritesheet = sheet;
         this.action = "idle";
         this.state = 1;
-
-        Timer timer = new Timer();
-        timer.scheduleAtFixedRate(new TimerTask() {
-            @Override
-            public void run() {
-                animate();
-            }
-        }, 0, 333);
     }
 
-    private void animate() {
+    public Bitmap getFrame() {
+        // Updates sprite state and action
+        this.update();
+
         // Deprecated way for single sprites
         //String path = "@drawable/" + this.action + "_" + (this.caveman.stickIsSword() ? "sword_" : "") + this.state.toString();
         //Bitmap img = BitmapFactory.decodeFile(path);
@@ -47,29 +41,28 @@ public class Sprite {
         int scale = 5;
         // Specifies the row of the searched frame
         int x = 0;
-        switch (this.action) {
+        switch (action) {
             case "idle" : x = 0; break;
             case "lost" : x = 1; break;
             case "won" : x = 2; break;
-            case "poke" : x = this.state <= 2 ? 3 : 4; break;
-            case "block" : x = this.state <= 2 ? 5 : 6; break;
-            case "sharpen" : x = this.state <= 2 ? 7 : 8; break;
+            case "poke" : x = state <= 2 ? 3 : 4; break;
+            case "block" : x = state <= 2 ? 5 : 6; break;
+            case "sharpen" : x = state <= 2 ? 7 : 8; break;
         }
         // Use the second half of the spritesheet if sprite should have a sword
-        if (this.caveman.stickIsSword()) {
+        if (caveman.stickIsSword()) {
             x += 9;
         }
         // Sets the column of the frame
-        int y = (this.state - 1) % 2;
+        int y = (state - 1) % 2;
 
         // Crops frame out of spritesheet and resizes it
         Bitmap frame;
-        frame = Bitmap.createBitmap(this.spritesheet, x * px, y * px, px, px);
+        frame = Bitmap.createBitmap(this.spritesheet, 15, 15, 32, 32);
+        //frame = Bitmap.createBitmap(this.spritesheet, x * px, y * px, px, px);
         frame = Bitmap.createScaledBitmap(frame, px * scale, px * scale, false);
-        // Manipulates image of the imageView
-        this.surface.setImageBitmap(frame);
-        // Updates sprite state and action
-        update();
+        // Return frame
+        return frame;
     }
 
     private void update() {
