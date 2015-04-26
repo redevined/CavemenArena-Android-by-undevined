@@ -1,19 +1,14 @@
 package cavemenarena.undevined.com.cavemenarena;
 
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
+
 import cavemenarena.undevined.com.cavemenarena.classes.Cave;
 import cavemenarena.undevined.com.cavemenarena.classes.Caveman;
-import cavemenarena.undevined.com.cavemenarena.classes.Sprite;
+import cavemenarena.undevined.com.cavemenarena.classes.Sprites.HeavySprite;
 import cavemenarena.undevined.com.cavemenarena.util.SystemUiHider;
 
-import android.annotation.TargetApi;
 import android.app.Activity;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
-import android.view.MotionEvent;
-import android.view.View;
 import android.widget.ImageView;
 
 import java.util.Timer;
@@ -75,8 +70,10 @@ public class GameActivity extends Activity {
     }
 
     private Cave game;
-    private Sprite player1Sprite;
-    private Sprite player2Sprite;
+    //private Sprite player1Sprite;
+    //private Sprite player2Sprite;
+    private HeavySprite player1Sprite;
+    private HeavySprite player2Sprite;
     private Timer spriteTimer;
 
     @Override
@@ -88,10 +85,14 @@ public class GameActivity extends Activity {
         this.game = new Cave("Player", "CPU", 2);
         Caveman player1 = this.game.getPlayer1();
         Caveman player2 = this.game.getPlayer2();
-        Bitmap spritesheet = BitmapFactory.decodeResource(getResources(), R.drawable.spritesheet_caveman_32x32);
 
-        this.player1Sprite = new Sprite(player1, player2, spritesheet);
-        this.player2Sprite = new Sprite(player2, player1, spritesheet);
+        //Bitmap spritesheet = BitmapFactory.decodeResource(getResources(), R.drawable.spritesheet_caveman_32x32);
+        //Bitmap spritesheet = ImageResizer.decodeSampledBitmap(getResources(), R.drawable.spritesheet_caveman_32x32, 160, 160);
+
+        //this.player1Sprite = new Sprite(player1, player2, spritesheet);
+        //this.player2Sprite = new Sprite(player2, player1, spritesheet);
+        this.player1Sprite = new HeavySprite(player1, player2, getResources());
+        this.player2Sprite = new HeavySprite(player2, player1, getResources());
 
         this.spriteTimer = new Timer();
         this.spriteTimer.scheduleAtFixedRate(new SpriteAnimation(), 0, 333);
