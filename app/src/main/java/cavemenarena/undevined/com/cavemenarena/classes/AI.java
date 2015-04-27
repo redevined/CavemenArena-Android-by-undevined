@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Random;
 
 /**
- * Artificial Intelligence class
+ * Artificial Intelligence class.
  * Created by redevined on 17.03.2015.
  */
 public class AI {

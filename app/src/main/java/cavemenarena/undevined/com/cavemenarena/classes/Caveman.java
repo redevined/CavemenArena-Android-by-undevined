@@ -4,18 +4,7 @@ package cavemenarena.undevined.com.cavemenarena.classes;
  * Created by sleephead on 04.03.15.
  */
 public class Caveman {
-    ///**
-    // * sharpen the weapon
-    // */
-    //public static final int SHARPEN = 0;
-    ///**
-    // * attack the enemy
-    // */
-    //public static final int POKE = 1;
-    ///**
-    // * block an attack
-    // */
-    //public static final int BLOCK = 2;
+
     private int health;
     private Stick weapon;
     private int nextAction;
@@ -32,10 +21,6 @@ public class Caveman {
         return this.nextAction;
     }
 
-    //public String getActionString() {
-    //    return Actions.getActionName(this.nextAction);
-    //}
-
     public Boolean setNextAction(int i) {
         if(Actions.checkActionKey(i)) {
             this.nextAction = i;
@@ -43,15 +28,6 @@ public class Caveman {
         }
         return false;
     }
-
-    //public Boolean setNextActionString(String ActionName) {
-    //    int myAction;
-    //    myAction = Actions.getActionValue(ActionName);
-    //    if(myAction == -1) {
-    //        return false;
-    //    }
-    //    return true;
-    //}
 
     public int getStickSharpness() {
         return this.weapon.getSharpness();
@@ -68,6 +44,7 @@ public class Caveman {
     public void sharpenStick(){
         this.weapon.sharpen();
     }
+
     public void abradeStick(){
         this.weapon.abrade();
     }
@@ -75,6 +52,8 @@ public class Caveman {
     public void loseHealth(){
         this.health--;
     }
+
+    /*
     public boolean loseHealth(int i){
         if (i > 0) {
             this.health = (i > this.health) ? this.health - i : 0;
@@ -82,26 +61,22 @@ public class Caveman {
         }
         return false;
     }
+    */
+
     public boolean isDead(){
-        if(this.health <= 0){
-            return true;
-        }
-        return false;
+        return this.health <= 0;
     }
 
     public void kill(){
         this.health = 0;
     }
+
     public boolean stickIsSword(){
-        if(this.weapon.isSword()){
-            return true;
-        }
-        return false;
+        return this.weapon.isSword();
     }
+
     public boolean weaponIsBlunt(){
-        if(this.weapon.getSharpness() == 0){
-            return true;
-        }
-        return false;
+        return this.weapon.getSharpness() == 0;
     }
+
 }

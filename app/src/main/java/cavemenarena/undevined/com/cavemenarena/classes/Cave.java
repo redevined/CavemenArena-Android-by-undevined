@@ -38,10 +38,7 @@ public class Cave {
 
     public Boolean setPlayerAction(int action){
         player1.setNextAction(action);
-        if(this.playRound())
-            return true;
-        else
-            return false;
+        return this.playRound();
     }
 
     private Boolean playRound() {
@@ -82,11 +79,9 @@ public class Cave {
                         this.player2.abradeStick();
                         if ((player1.stickIsSword() && !player2.stickIsSword())) {
                             player2.kill();
-
                         }
                         if ((player2.stickIsSword() && !player1.stickIsSword())) {
                             player1.kill();
-
                         }
                         break;
                     case Actions.BLOCK:
@@ -105,19 +100,14 @@ public class Cave {
 
                     case Actions.BLOCK:
                         break;
-
                 }
                 break;
-
         }
-        if(player1.isDead() || player2.isDead())
-            return true;
-        else
-            return false;
+
+        return player1.isDead() || player2.isDead();
     }
 
     private void sharpenPoke(Caveman one, Caveman other){
-
         if (other.stickIsSword()) {
             one.kill();
         } else if(!other.weaponIsBlunt()){

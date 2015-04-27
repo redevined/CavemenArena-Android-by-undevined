@@ -1,13 +1,18 @@
 package cavemenarena.undevined.com.cavemenarena.classes.Sprites;
 
+import android.content.res.Resources;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 
+import java.util.HashMap;
+
+import cavemenarena.undevined.com.cavemenarena.R;
 import cavemenarena.undevined.com.cavemenarena.classes.Actions;
 import cavemenarena.undevined.com.cavemenarena.classes.Caveman;
 
 /**
- * Original Sprite class, uses spritesheet to crop and enlarge actual sprites
- * Created by oliver on 16.04.15.
+ * Memory heavier Sprite class, uses single Bitmaps as sprites.
+ * Created by redevined on 16.04.15.
  */
 public class Sprite {
 
@@ -16,52 +21,82 @@ public class Sprite {
     String action;
     int state;
 
-    Bitmap spritesheet;
-    final int dim = 32;
-    final int scale = 5;
+    HashMap<String,Bitmap> frames;
 
-    public Sprite(Caveman self, Caveman other, Bitmap sheet) {
+    /**
+     * Parameterless constructor for inheriting classes.
+     */
+    public Sprite() { }
+
+    /**
+     * Constructor creates HashMap of all frames so the frames can be retrieved and returned in getFrame().
+     * Advantage is, that Bitmaps only need to be rendered once.
+     */
+    public Sprite(Caveman self, Caveman other, final Resources resources) {
         this.caveman = self;
         this.caveman2 = other;
-        this.spritesheet = sheet;
         this.action = "idle";
         this.state = 2;
+
+        this.frames = new HashMap<String,Bitmap>() {{
+            put("idle_1", BitmapFactory.decodeResource(resources, R.drawable.idle_1));
+            put("idle_2", BitmapFactory.decodeResource(resources, R.drawable.idle_2));
+            put("lost_1", BitmapFactory.decodeResource(resources, R.drawable.lost_1));
+            put("lost_2", BitmapFactory.decodeResource(resources, R.drawable.lost_2));
+            put("won_1", BitmapFactory.decodeResource(resources, R.drawable.won_1));
+            put("won_2", BitmapFactory.decodeResource(resources, R.drawable.won_2));
+            put("poke_1", BitmapFactory.decodeResource(resources, R.drawable.poke_1));
+            put("poke_2", BitmapFactory.decodeResource(resources, R.drawable.poke_2));
+            put("poke_3", BitmapFactory.decodeResource(resources, R.drawable.poke_3));
+            put("poke_4", BitmapFactory.decodeResource(resources, R.drawable.poke_4));
+            put("block_1", BitmapFactory.decodeResource(resources, R.drawable.block_1));
+            put("block_2", BitmapFactory.decodeResource(resources, R.drawable.block_2));
+            put("block_3", BitmapFactory.decodeResource(resources, R.drawable.block_3));
+            put("block_4", BitmapFactory.decodeResource(resources, R.drawable.block_4));
+            put("sharpen_1", BitmapFactory.decodeResource(resources, R.drawable.sharpen_1));
+            put("sharpen_2", BitmapFactory.decodeResource(resources, R.drawable.sharpen_2));
+            put("sharpen_3", BitmapFactory.decodeResource(resources, R.drawable.sharpen_3));
+            put("sharpen_4", BitmapFactory.decodeResource(resources, R.drawable.sharpen_4));
+            put("idle_sword_1", BitmapFactory.decodeResource(resources, R.drawable.idle_sword_1));
+            put("idle_sword_2", BitmapFactory.decodeResource(resources, R.drawable.idle_sword_2));
+            put("lost_sword_1", BitmapFactory.decodeResource(resources, R.drawable.lost_sword_1));
+            put("lost_sword_2", BitmapFactory.decodeResource(resources, R.drawable.lost_sword_2));
+            put("won_sword_1", BitmapFactory.decodeResource(resources, R.drawable.won_sword_1));
+            put("won_sword_2", BitmapFactory.decodeResource(resources, R.drawable.won_sword_2));
+            put("poke_sword_1", BitmapFactory.decodeResource(resources, R.drawable.poke_sword_1));
+            put("poke_sword_2", BitmapFactory.decodeResource(resources, R.drawable.poke_sword_2));
+            put("poke_sword_3", BitmapFactory.decodeResource(resources, R.drawable.poke_sword_3));
+            put("poke_sword_4", BitmapFactory.decodeResource(resources, R.drawable.poke_sword_4));
+            put("block_sword_1", BitmapFactory.decodeResource(resources, R.drawable.block_sword_1));
+            put("block_sword_2", BitmapFactory.decodeResource(resources, R.drawable.block_sword_2));
+            put("block_sword_3", BitmapFactory.decodeResource(resources, R.drawable.block_sword_3));
+            put("block_sword_4", BitmapFactory.decodeResource(resources, R.drawable.block_sword_4));
+            put("sharpen_sword_1", BitmapFactory.decodeResource(resources, R.drawable.sharpen_sword_1));
+            put("sharpen_sword_2", BitmapFactory.decodeResource(resources, R.drawable.sharpen_sword_2));
+            put("sharpen_sword_3", BitmapFactory.decodeResource(resources, R.drawable.sharpen_sword_3));
+            put("sharpen_sword_4", BitmapFactory.decodeResource(resources, R.drawable.sharpen_sword_4));
+        }};
     }
 
+    /**
+     * Returns current frame.
+     */
     public Bitmap getFrame() {
-        // Update sprite state and action
         this.update();
 
-        // Specify the row of the searched frame
-        int y = 0;
-        switch (action) {
-            case "idle" : y = 0; break;
-            case "lost" : y = 1; break;
-            case "won" : y = 2; break;
-            case "poke" : y = state <= 2 ? 3 : 4; break;
-            case "block" : y = state <= 2 ? 5 : 6; break;
-            case "sharpen" : y = state <= 2 ? 7 : 8; break;
-        }
-        // Use the second half of the spritesheet if sprite should have a sword
-        if (caveman.stickIsSword()) {
-            y += 9;
-        }
-        // Set the column of the frame
-        int x = (state - 1) % 2;
+        String key = this.action + "_" + (this.caveman.stickIsSword() ? "sword_" : "") + this.state;
+        Bitmap frame = this.frames.get(key);
 
-        // Crop frame out of spritesheet and resizes it
-        Bitmap frame;
-        frame = Bitmap.createBitmap(this.spritesheet, x * dim, y * dim, dim, dim);
-        frame = Bitmap.createScaledBitmap(frame, dim * scale, dim * scale, false);
-
-        // Return frame
         return frame;
     }
 
-    private void update() {
+    /**
+     * Changes internal state of the Sprite.
+     */
+    protected void update() {
         this.state++;
 
-        if (this.action.equals("poke") || this.action.equals("block") || this.action.equals("sharpen")) {
+        if (Actions.checkActionKey(this.action)) {
             if (this.state > 4) {
                 this.state = 1;
                 if (this.caveman.isDead()) {
@@ -80,19 +115,12 @@ public class Sprite {
     }
 
     /**
+     * Sets next Sprite animation.
      * Call this method after a button has been pressed and the caveman's action is set.
      */
     public void triggerAction() {
-        int ac = this.caveman.getNextAction();
-
-        if (ac == Actions.POKE) {
-            this.action = "poke";
-        } else if (ac == Actions.BLOCK) {
-            this.action = "block";
-        } else if (ac == Actions.SHARPEN) {
-            this.action = "sharpen";
-        }
-
+        int next = this.caveman.getNextAction();
+        this.action = Actions.getActionName(next);
         this.state = 1;
     }
 

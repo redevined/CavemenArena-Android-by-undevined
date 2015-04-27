@@ -25,11 +25,6 @@ public class Stick {
     }
 
     public boolean isSword() {
-        if(this.sharpness > 4) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return this.sharpness > 4;
     }
 }

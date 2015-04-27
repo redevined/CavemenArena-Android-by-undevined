@@ -4,7 +4,7 @@ import android.graphics.Bitmap;
 
 import cavemenarena.undevined.com.cavemenarena.classes.Cave;
 import cavemenarena.undevined.com.cavemenarena.classes.Caveman;
-import cavemenarena.undevined.com.cavemenarena.classes.Sprites.HeavySprite;
+import cavemenarena.undevined.com.cavemenarena.classes.Sprites.Sprite;
 import cavemenarena.undevined.com.cavemenarena.util.SystemUiHider;
 
 import android.app.Activity;
@@ -50,6 +50,10 @@ public class GameActivity extends Activity {
      */
     private SystemUiHider mSystemUiHider;
 
+
+    /**
+     * Main animation routine.
+     */
     private class SpriteAnimation extends TimerTask {
 
         @Override
@@ -69,12 +73,12 @@ public class GameActivity extends Activity {
         }
     }
 
+
     private Cave game;
-    //private Sprite player1Sprite;
-    //private Sprite player2Sprite;
-    private HeavySprite player1Sprite;
-    private HeavySprite player2Sprite;
+    private Sprite player1Sprite;
+    private Sprite player2Sprite;
     private Timer spriteTimer;
+    private final int fps = 3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,18 +90,18 @@ public class GameActivity extends Activity {
         Caveman player1 = this.game.getPlayer1();
         Caveman player2 = this.game.getPlayer2();
 
-        //Bitmap spritesheet = BitmapFactory.decodeResource(getResources(), R.drawable.spritesheet_caveman_32x32);
-        //Bitmap spritesheet = ImageResizer.decodeSampledBitmap(getResources(), R.drawable.spritesheet_caveman_32x32, 160, 160);
+        this.player1Sprite = new Sprite(player1, player2, getResources());
+        this.player2Sprite = new Sprite(player2, player1, getResources());
 
-        //this.player1Sprite = new Sprite(player1, player2, spritesheet);
-        //this.player2Sprite = new Sprite(player2, player1, spritesheet);
-        this.player1Sprite = new HeavySprite(player1, player2, getResources());
-        this.player2Sprite = new HeavySprite(player2, player1, getResources());
+        //Bitmap spritesheet = BitmapFactory.decodeResource(getResources(), R.drawable.spritesheet_caveman_32x32);
+        //this.player1Sprite = new CompactSprite(player1, player2, spritesheet);
+        //this.player2Sprite = new CompactSprite(player2, player1, spritesheet);
 
         this.spriteTimer = new Timer();
-        this.spriteTimer.scheduleAtFixedRate(new SpriteAnimation(), 0, 333);
+        this.spriteTimer.scheduleAtFixedRate(new SpriteAnimation(), 0, 1000 / 3);
 
-        /*mSystemUiHider.setup();
+        /*
+        mSystemUiHider.setup();
         mSystemUiHider
                 .setOnVisibilityChangeListener(new SystemUiHider.OnVisibilityChangeListener() {
                     // Cached values.
@@ -112,7 +116,8 @@ public class GameActivity extends Activity {
                             delayedHide(AUTO_HIDE_DELAY_MILLIS);
                         }
                     }
-                });*/
+                });
+        */
 
     }
 

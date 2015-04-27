@@ -1,7 +1,11 @@
 #!/usr/bin/env python
 
 import sys, os
-from PIL import Image
+try :
+	from PIL import Image
+except Exception :
+	print "Please install missing dependencies: pip install pillow"
+	exit()
 
 
 def main(fname, folder = ".", factor = 1) :
@@ -41,5 +45,6 @@ def main(fname, folder = ".", factor = 1) :
 if __name__ == "__main__" :
 	try :
 		main(*sys.argv[1:])
-	except Exception :
+	except Exception as e :
+		print e
 		print "Usage: python cut_spritesheet.py [spritesheet] [output_path] [zoom_factor]"
