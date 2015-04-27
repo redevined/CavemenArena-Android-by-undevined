@@ -23,9 +23,10 @@ public class CompactSprite extends Sprite {
     public CompactSprite(Caveman self, Caveman other, Bitmap sheet) {
         this.caveman = self;
         this.caveman2 = other;
-        this.spritesheet = sheet;
         this.action = "idle";
         this.state = 2;
+
+        this.spritesheet = sheet;
     }
 
     @Override

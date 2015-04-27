@@ -11,7 +11,7 @@ import cavemenarena.undevined.com.cavemenarena.classes.Actions;
 import cavemenarena.undevined.com.cavemenarena.classes.Caveman;
 
 /**
- * Memory heavier Sprite class, uses single Bitmaps as sprites.
+ * Memory heavy Sprite class, uses single Bitmaps as sprites.
  * Created by redevined on 16.04.15.
  */
 public class Sprite {
@@ -29,16 +29,26 @@ public class Sprite {
     public Sprite() { }
 
     /**
-     * Constructor creates HashMap of all frames so the frames can be retrieved and returned in getFrame().
-     * Advantage is, that Bitmaps only need to be rendered once.
+     * Constructor
+     * @param self: Caveman that is resembled by the Sprite
+     * @param other: Caveman's opponent
+     * @param resources: Return values of getResources() call
      */
-    public Sprite(Caveman self, Caveman other, final Resources resources) {
+    public Sprite(Caveman self, Caveman other, Resources resources) {
         this.caveman = self;
         this.caveman2 = other;
         this.action = "idle";
         this.state = 2;
 
-        this.frames = new HashMap<String,Bitmap>() {{
+        this.frames = loadFrames(resources);
+    }
+
+    /**
+     * Creates HashMap of all frames so the frames can be retrieved and returned in getFrame().
+     * Advantage is, that Bitmaps only need to be rendered once.
+     */
+    protected HashMap<String,Bitmap> loadFrames(final Resources resources) {
+        return new HashMap<String,Bitmap>() {{
             put("idle_1", BitmapFactory.decodeResource(resources, R.drawable.idle_1));
             put("idle_2", BitmapFactory.decodeResource(resources, R.drawable.idle_2));
             put("lost_1", BitmapFactory.decodeResource(resources, R.drawable.lost_1));
@@ -79,18 +89,6 @@ public class Sprite {
     }
 
     /**
-     * Returns current frame.
-     */
-    public Bitmap getFrame() {
-        this.update();
-
-        String key = this.action + "_" + (this.caveman.stickIsSword() ? "sword_" : "") + this.state;
-        Bitmap frame = this.frames.get(key);
-
-        return frame;
-    }
-
-    /**
      * Changes internal state of the Sprite.
      */
     protected void update() {
@@ -112,6 +110,18 @@ public class Sprite {
                 this.state = 1;
             }
         }
+    }
+
+    /**
+     * Returns current frame.
+     */
+    public Bitmap getFrame() {
+        this.update();
+
+        String key = this.action + "_" + (this.caveman.stickIsSword() ? "sword_" : "") + this.state;
+        Bitmap frame = this.frames.get(key);
+
+        return frame;
     }
 
     /**
