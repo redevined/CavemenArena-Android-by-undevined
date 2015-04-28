@@ -1,0 +1,27 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+             tools:context="cavemenarena.undevined.com.cavemenarena.GameActivity"
+             android:background="@drawable/background">
+
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:baselineAligned="false">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleX="-1"
+            android:id="@+id/player1"
+            android:layout_weight="1"
+            android:layout_gravity="center_vertical|right" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/player2"
+            android:layout_weight="1"
+            android:layout_gravity="center_vertical|left" />
+    </LinearLayout>
+</FrameLayout>
+<!-- From: file:/C:/Users/home/Projects/CavemenArena-Android-by-undevined/app/src/main/res/layout/activity_game.xml -->
