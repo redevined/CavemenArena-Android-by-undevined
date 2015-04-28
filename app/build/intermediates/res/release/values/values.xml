@@ -177,15 +177,18 @@
     <!-- From: file:/C:/Users/home/Projects/CavemenArena-Android-by-undevined/app/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="app_name">Cavemen Arena</string>
+    <string name="block_button">B</string>
     <string name="difficultyLevel">Schwierigkeitsstufe</string>
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="howToPart1">Hier noch schreiben, was der Benutzer machen muss</string>
     <string name="howToTitle">How To</string>
     <string name="howto_button">How To</string>
+    <string name="lose_button">You lost...</string>
     <string name="play_button">Play</string>
+    <string name="poke_button">P</string>
+    <string name="sharpen_button">S</string>
     <string name="title_activity_game">GameActivity</string>
     <string name="title_activity_how_to">How To</string>
+    <string name="win_button">You won!</string>
     <!-- From: file:/C:/Users/home/Projects/CavemenArena-Android-by-undevined/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.0.0/res/values/values.xml -->
     <eat-comment/>
     <style name="Animation.AppCompat.DropDownUp" parent="Base.Animation.AppCompat.DropDownUp"/>
