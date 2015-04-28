@@ -91,7 +91,9 @@ public class GameActivity extends Activity {
 
         setContentView(R.layout.activity_game);
 
-        this.game = new Cave("Player", "CPU", 2);
+        int difficulty = getIntent().getIntExtra("level", 1);
+
+        this.game = new Cave("Player", "CPU", difficulty);
         Caveman player1 = this.game.getPlayer1();
         Caveman player2 = this.game.getPlayer2();
 
@@ -103,7 +105,7 @@ public class GameActivity extends Activity {
         //this.player2Sprite = new CompactSprite(player2, player1, spritesheet);
 
         this.spriteTimer = new Timer();
-        this.spriteTimer.scheduleAtFixedRate(new SpriteAnimation(), 0, 1000 / 3);
+        this.spriteTimer.scheduleAtFixedRate(new SpriteAnimation(), 0, 1000 / fps);
 
         /*
         mSystemUiHider.setup();

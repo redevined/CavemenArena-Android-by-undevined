@@ -1,10 +1,12 @@
 package cavemenarena.undevined.com.cavemenarena;
 
+import cavemenarena.undevined.com.cavemenarena.classes.Sprites.DemoSprite;
 import cavemenarena.undevined.com.cavemenarena.util.SystemUiHider;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -13,6 +15,10 @@ import android.view.View;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.widget.Button;
+import android.widget.ImageView;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 import static android.content.DialogInterface.OnClickListener;
 
@@ -52,15 +58,40 @@ public class StartActivity extends Activity implements OnClickListener {
      */
     private SystemUiHider mSystemUiHider;
 
-    private View startView;
+
+    private class SpriteAnimation extends TimerTask {
+
+        @Override
+        public void run() {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    ImageView view = (ImageView)findViewById(R.id.demo_sprite);
+                    Bitmap frame = sprite.getFrame();
+                    view.setImageBitmap(frame);
+                }
+            });
+        }
+
+    }
+
+
+    private DemoSprite sprite;
+    private Timer spriteTimer;
+    private final int fps = 3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
 
-        startView = findViewById(R.id.startView);
+        View startView = findViewById(R.id.startView);
         startView.setVisibility(View.VISIBLE);
+
+        sprite = new DemoSprite(getResources());
+
+        this.spriteTimer = new Timer();
+        this.spriteTimer.scheduleAtFixedRate(new SpriteAnimation(), 0, 1000 / fps);
     }
 
     @Override

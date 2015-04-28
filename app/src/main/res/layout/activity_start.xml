@@ -31,5 +31,15 @@
             android:width="200sp"
             android:onClick="gotoHowTo"
             />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/demo_sprite"
+            android:layout_above="@+id/play_button"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="120dp" />
+
     </RelativeLayout>
+
 </FrameLayout>

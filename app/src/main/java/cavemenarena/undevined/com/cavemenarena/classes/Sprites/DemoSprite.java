@@ -49,7 +49,7 @@ public class DemoSprite extends Sprite {
             state = (this.counter % 4) + 1;
         }
 
-        this.counter = this.counter++ % 24;
+        this.counter = (this.counter + 1) % 24;
 
         String key = action + "_" + state;
         Bitmap frame = this.frames.get(key);
