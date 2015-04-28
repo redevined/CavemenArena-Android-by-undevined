@@ -57,7 +57,4 @@ public class DemoSprite extends Sprite {
         return frame;
     }
 
-    @Override
-    public void triggerAction() { }
-
 }

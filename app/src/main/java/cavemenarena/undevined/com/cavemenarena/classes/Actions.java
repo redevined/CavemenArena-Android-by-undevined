@@ -33,13 +33,12 @@ public final class Actions {
     }
 
     public static int getActionInt(String name) {
-        switch(name) {
-            case "sharpen":
-                return SHARPEN;
-            case "poke":
-                return POKE;
-            case "block":
-                return BLOCK;
+        if (name.equals("sharpen")) {
+            return SHARPEN;
+        } else if (name.equals("poke")) {
+            return POKE;
+        } else if (name.equals("block")) {
+            return BLOCK;
         }
         return 0;
     }

@@ -34,13 +34,18 @@ public class CompactSprite extends Sprite {
         this.update();
 
         int y = 0;
-        switch (action) {
-            case "idle" : y = 0; break;
-            case "lost" : y = 1; break;
-            case "won" : y = 2; break;
-            case "poke" : y = state <= 2 ? 3 : 4; break;
-            case "block" : y = state <= 2 ? 5 : 6; break;
-            case "sharpen" : y = state <= 2 ? 7 : 8; break;
+        if (action.equals("idle")) {
+            y = 0;
+        } else if (action.equals("lost")) {
+            y = 1;
+        } else if (action.equals("won")) {
+            y = 2;
+        } else if (action.equals("poke")) {
+            y = state <= 2 ? 3 : 4;
+        } else if (action.equals("block")) {
+            y = state <= 2 ? 5 : 6;
+        } else if (action.equals("sharpen")) {
+            y = state <= 2 ? 7 : 8;
         }
         if (caveman.stickIsSword()) {
             y += 9;

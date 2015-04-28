@@ -10,321 +10,270 @@
         android:fitsSystemWindows="true"
         android:layout_gravity="right|top">
 
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:id="@+id/fullscreen_content_controls">
+        <ScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/scrollView"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="HowTo"
-                android:id="@+id/textView"
-                android:textSize="50dp"
-                android:textColor="#000000"
-                android:layout_gravity="center_horizontal" />
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:id="@+id/fullscreen_content_controls">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Ausgangssituation"
-                android:id="@+id/textView2"
-                android:layout_marginTop="20dp"
-                android:textSize="20dp"
-                android:textColor="#dd0000"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="How to Play"
+                    android:id="@+id/textView"
+                    android:textSize="50dp"
+                    android:textColor="#000000"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="8dp" />
 
-            <TextView
-                android:layout_marginTop="8dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Du bist ein Höhlenmensch und trittst im Kampf gegen deinen größten Konkurenten an."
-                android:id="@+id/textView3"
-                android:textColor="#000000" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Ausgangssituation"
+                    android:id="@+id/textView2"
+                    android:layout_marginTop="15dp"
+                    android:textSize="20dp"
+                    android:textColor="#dd0000" />
 
-            <TextView
-                android:layout_marginTop="8dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Als Waffe besitzt jeder einen Stock, der Kampf wird in Runden ausgetragen."
-                android:id="@+id/textView4"
-                android:textColor="#000000" />
-            <TextView
-                android:layout_marginTop="8dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Das Spiel ist zu Ende wenn einer der Kämpfer mit seinem Leben bezahlt hat, nimm Dich also in Acht und versuche deinem Gegner zuvorzukommen."
-                android:id="@+id/textView5"
-                android:textColor="#000000" />
-            <TextView
-                android:layout_marginTop="8dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Gewinner ist nach gängiger Praxis der, der den Kampf überlebt."
-                android:id="@+id/textView6"
-                android:textColor="#000000" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Die Runden"
-                android:id="@+id/textView7"
-                android:layout_marginTop="30dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:textSize="20dp"
-                android:textColor="#dd0000" />
+                <TextView
+                    android:layout_marginTop="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Du bist ein Höhlenmensch und trittst im Kampf gegen deinen größten Konkurenten an."
+                    android:id="@+id/textView3"
+                    android:textColor="#000000" />
 
-            <TextView
-                android:layout_marginTop="8dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="In jeder Runde kannst du zwischen drei verschiedenen Aktionen wählen:"
+                <TextView
+                    android:layout_marginTop="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Als Waffe besitzt jeder einen Stock, der Kampf wird in Runden ausgetragen."
+                    android:id="@+id/textView4"
+                    android:textColor="#000000" />
+                <TextView
+                    android:layout_marginTop="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Das Spiel ist zu Ende wenn einer der Kämpfer mit seinem Leben bezahlt hat, nimm Dich also in Acht und versuche deinem Gegner zuvorzukommen."
+                    android:id="@+id/textView5"
+                    android:textColor="#000000" />
+                <TextView
+                    android:layout_marginTop="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Gewinner ist nach gängiger Praxis der, der den Kampf überlebt."
+                    android:id="@+id/textView6"
+                    android:textColor="#000000" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Die Runden"
+                    android:id="@+id/textView7"
+                    android:layout_marginTop="30dp"
+                    android:textSize="20dp"
+                    android:textColor="#dd0000" />
 
-                android:id="@+id/textView8"
-                android:textColor="#000000" />
-            <TextView
-                android:layout_marginTop="8dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="    &#8226; Sharpen (Stock schärfen)
-    &#8226; Poke (angreifen)
-    &#8226; Block (Angriff abwehren)"
+                <TextView
+                    android:layout_marginTop="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="In jeder Runde kannst du zwischen drei verschiedenen Aktionen wählen:"
 
-                android:id="@+id/textView9"
-                android:textColor="#000000" />
+                    android:id="@+id/textView8"
+                    android:textColor="#000000" />
+                <TextView
+                    android:layout_marginTop="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="    &#8226; Sharpen (Stock schärfen)
+        &#8226; Poke (angreifen)
+        &#8226; Block (Angriff abwehren)"
 
-            <TextView
-                android:layout_marginTop="15dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Haben beide Höhlenmenschen Ihre nächste Aktion gewählt kann die Runde ausgetragen werden und es wird sich zeigen, ob deine Wahl die Richtige war."
+                    android:id="@+id/textView9"
+                    android:textColor="#000000" />
 
-                android:id="@+id/textView10"
-                android:textColor="#000000" />
+                <TextView
+                    android:layout_marginTop="15dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Haben beide Höhlenmenschen Ihre nächste Aktion gewählt kann die Runde ausgetragen werden und es wird sich zeigen, ob deine Wahl die Richtige war."
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Aktionen im Detail"
-                android:id="@+id/textVie11"
-                android:layout_marginTop="30dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:textSize="20dp"
-                android:textColor="#dd0000" />
+                    android:id="@+id/textView10"
+                    android:textColor="#000000" />
 
-            <TextView
-                android:layout_marginTop="15dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Sharpen (Stock schärfen)"
-                android:textStyle="bold"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Aktionen im Detail"
+                    android:id="@+id/textView11"
+                    android:layout_marginTop="30dp"
+                    android:textSize="20dp"
+                    android:textColor="#dd0000" />
 
-                android:id="@+id/textView12"
-                android:textColor="#000000" />
-            <TextView
-                android:layout_marginTop="8dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Dein Höhlenmensch schärft seinen Stock mit einem Stein"
-                android:id="@+id/textView13"
-                android:textColor="#000000" />
-            <TextView
-                android:layout_marginTop="8dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Zu Beginn des Spiels ist dein Stock vollkommen Stumpf, das Schärfelevel beträgt 0."
-                android:id="@+id/textView13_2"
-                android:textColor="#000000" />
-            <TextView
-                android:layout_marginTop="8dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Schlägst du deinen Gegner mit einem vollkommen Stumpfen Stock, so wird ihm nichts passieren, selbst wenn er deinen Angriff nicht abwehrt"
-                android:id="@+id/textView13_2"
-                android:textColor="#000000" />
-            <TextView
-                android:layout_marginTop="8dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Um deinen Gegner zu besiegen, musst du deinen Stock also schärfen. Der Schärfegrad erhöht sich dadurch um 1,  wenn du die folgende Runde überlebst."
-                android:id="@+id/textView13_3"
-                android:textColor="#000000" />
-            <TextView
-                android:layout_marginTop="8dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Greifst du in einer Spielrunde deinen Gegner an, so wird sich das Schärfelevel deines Stocks wieder um 1 verringern."
-                android:id="@+id/textView13_4"
-                android:textColor="#000000" />
-            <TextView
-                android:layout_marginTop="8dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Hat dein Stock einen Schärfegrad von 5 erreicht ist er fortan ein Schwert bis der das Schärfelevel wieder unter 5 Fällt. Ein Schwert kann nicht geblockt werden und gewinnt auch, im Falle das beide angreifen, gegen einen Stock, der noch kein Schwert ist"
-                android:id="@+id/textView13_5"
-                android:textColor="#000000" />
+                <TextView
+                    android:layout_marginTop="15dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sharpen (Stock schärfen)"
+                    android:textStyle="bold"
 
-            <TextView
-                android:layout_marginTop="15dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Poke (angreifen)"
-                android:textStyle="bold"
+                    android:id="@+id/textView12"
+                    android:textColor="#000000" />
+                <TextView
+                    android:layout_marginTop="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Dein Höhlenmensch schärft seinen Stock mit einem Stein"
+                    android:id="@+id/textView13"
+                    android:textColor="#000000" />
+                <TextView
+                    android:layout_marginTop="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Zu Beginn des Spiels ist dein Stock vollkommen Stumpf, das Schärfelevel beträgt 0."
+                    android:id="@+id/textView13_1"
+                    android:textColor="#000000" />
+                <TextView
+                    android:layout_marginTop="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Schlägst du deinen Gegner mit einem vollkommen Stumpfen Stock, so wird ihm nichts passieren, selbst wenn er deinen Angriff nicht abwehrt"
+                    android:id="@+id/textView13_2"
+                    android:textColor="#000000" />
+                <TextView
+                    android:layout_marginTop="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Um deinen Gegner zu besiegen, musst du deinen Stock also schärfen. Der Schärfegrad erhöht sich dadurch um 1,  wenn du die folgende Runde überlebst."
+                    android:id="@+id/textView13_3"
+                    android:textColor="#000000" />
+                <TextView
+                    android:layout_marginTop="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Greifst du in einer Spielrunde deinen Gegner an, so wird sich das Schärfelevel deines Stocks wieder um 1 verringern."
+                    android:id="@+id/textView13_4"
+                    android:textColor="#000000" />
+                <TextView
+                    android:layout_marginTop="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Hat dein Stock einen Schärfegrad von 5 erreicht ist er fortan ein Schwert bis der das Schärfelevel wieder unter 5 Fällt. Ein Schwert kann nicht geblockt werden und gewinnt auch, im Falle das beide angreifen, gegen einen Stock, der noch kein Schwert ist"
+                    android:id="@+id/textView13_5"
+                    android:textColor="#000000" />
 
-                android:id="@+id/textView14"
-                android:textColor="#000000" />
-            <TextView
-                android:layout_marginTop="8dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Du entscheidest dich für einen Angriff. Bedenke das dein Schwert einen Schärfegrad größer als 0 haben sollte, damit dein Angriff erfolgreich sein kann."
-                android:id="@+id/textView14_1"
-                android:textColor="#000000" />
-            <TextView
-                android:layout_marginTop="8dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Falls dein Gegner deinen Angriff blockt, könnte es hilfreich sein, ein Schwert zu haben."
-                android:id="@+id/textView14_2"
-                android:textColor="#000000" />
-            <TextView
-                android:layout_marginTop="8dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="In jedem Fall ist ein Angriff früher oder später unerlässlich, wenn du deinen Gegner besiegen willst"
-                android:id="@+id/textView14_3"
-                android:textColor="#000000" />
-            <TextView
-                android:layout_marginTop="15dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Block (Angriff abwehren)"
-                android:textStyle="bold"
+                <TextView
+                    android:layout_marginTop="15dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Poke (angreifen)"
+                    android:textStyle="bold"
 
-                android:id="@+id/textView15"
-                android:textColor="#000000" />
-            <TextView
-                android:layout_marginTop="8dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="In der nächsten Runde versuchst du, den Angriff deines Gegners abzuwehren."
-                android:id="@+id/textView15_1"
-                android:textColor="#000000" />
-            <TextView
-                android:layout_marginTop="8dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Bedenke, dass du damit dein Leben retten kannst. Schärft dein Gegner jedoch lediglich seinen Stock, hast du mit dieser Aktion eine Runde vertan."
-                android:id="@+id/textView15_2"
-                android:textColor="#000000" />
-            <TextView
-                android:layout_marginTop="8dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Sollte dein Gegner bereits ein Schwert haben, ist jeder Verteidigungsversuch vergeblich. Angriffe mit einem Schwert lassen sich nicht blocken und du wirst den Kampf verlieren."
-                android:id="@+id/textView15_3"
-                android:textColor="#000000" />
-            <TextView
-                android:layout_marginTop="8dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Ein erfolgreicher Block hingegen reduziert die Schärfe deines Gegners ohne deinen eigenen Stock in Mitleidenschaft zu ziehen. Vielleicht ist das dei Chance für deinen Angriff in der nächsten Runde"
-                android:id="@+id/textView15_4"
-                android:textColor="#000000" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Kurz und Knapp"
-                android:id="@+id/textView16"
-                android:layout_marginTop="30dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:textSize="20dp"
-                android:textColor="#000000" />
+                    android:id="@+id/textView14"
+                    android:textColor="#000000" />
+                <TextView
+                    android:layout_marginTop="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Du entscheidest dich für einen Angriff. Bedenke das dein Schwert einen Schärfegrad größer als 0 haben sollte, damit dein Angriff erfolgreich sein kann."
+                    android:id="@+id/textView14_1"
+                    android:textColor="#000000" />
+                <TextView
+                    android:layout_marginTop="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Falls dein Gegner deinen Angriff blockt, könnte es hilfreich sein, ein Schwert zu haben."
+                    android:id="@+id/textView14_2"
+                    android:textColor="#000000" />
+                <TextView
+                    android:layout_marginTop="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="In jedem Fall ist ein Angriff früher oder später unerlässlich, wenn du deinen Gegner besiegen willst"
+                    android:id="@+id/textView14_3"
+                    android:textColor="#000000" />
+                <TextView
+                    android:layout_marginTop="15dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Block (Angriff abwehren)"
+                    android:textStyle="bold"
 
-            <TextView
-                android:layout_marginTop="15dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Los geht's"
-                android:textStyle="bold"
-                android:id="@+id/textView17"
-                android:textColor="#000000" />
-            <TextView
-                android:layout_marginTop="8dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Scharfe deinen Stock, greife deinen Gegner an, verteidige Dich gegen seine Angriffe und besiege den Feind in einem erfolgreichen Kampf."
-                android:id="@+id/textView18"
-                android:textColor="#000000" />
-            <TextView
-                android:layout_marginTop="8dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Du wirst eine gute Strategie brauchen um in diesem Spiel zu überleben."
-                android:id="@+id/textView19"
-                android:textColor="#000000" />
-        </LinearLayout>
+                    android:id="@+id/textView15"
+                    android:textColor="#000000" />
+                <TextView
+                    android:layout_marginTop="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="In der nächsten Runde versuchst du, den Angriff deines Gegners abzuwehren."
+                    android:id="@+id/textView15_1"
+                    android:textColor="#000000" />
+                <TextView
+                    android:layout_marginTop="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Bedenke, dass du damit dein Leben retten kannst. Schärft dein Gegner jedoch lediglich seinen Stock, hast du mit dieser Aktion eine Runde vertan."
+                    android:id="@+id/textView15_2"
+                    android:textColor="#000000" />
+                <TextView
+                    android:layout_marginTop="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sollte dein Gegner bereits ein Schwert haben, ist jeder Verteidigungsversuch vergeblich. Angriffe mit einem Schwert lassen sich nicht blocken und du wirst den Kampf verlieren."
+                    android:id="@+id/textView15_3"
+                    android:textColor="#000000" />
+                <TextView
+                    android:layout_marginTop="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ein erfolgreicher Block hingegen reduziert die Schärfe deines Gegners ohne deinen eigenen Stock in Mitleidenschaft zu ziehen. Vielleicht ist das dei Chance für deinen Angriff in der nächsten Runde"
+                    android:id="@+id/textView15_4"
+                    android:textColor="#000000" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Kurz und Knapp"
+                    android:id="@+id/textView16"
+                    android:layout_marginTop="30dp"
+                    android:textSize="20dp"
+                    android:textColor="#dd0000" />
+
+                <TextView
+                    android:layout_marginTop="15dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Los geht's"
+                    android:textStyle="bold"
+                    android:id="@+id/textView17"
+                    android:textColor="#000000" />
+                <TextView
+                    android:layout_marginTop="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Scharfe deinen Stock, greife deinen Gegner an, verteidige Dich gegen seine Angriffe und besiege den Feind in einem erfolgreichen Kampf."
+                    android:id="@+id/textView18"
+                    android:textColor="#000000" />
+                <TextView
+                    android:layout_marginTop="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Du wirst eine gute Strategie brauchen um in diesem Spiel zu überleben."
+                    android:id="@+id/textView19"
+                    android:textColor="#000000" />
+            </LinearLayout>
+        </ScrollView>
     </FrameLayout>
 
 </FrameLayout>

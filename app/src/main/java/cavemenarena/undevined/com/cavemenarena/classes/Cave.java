@@ -134,10 +134,12 @@ public class Cave {
         return player1;
     }
 
-
     public Caveman getPlayer2() {
         return player2;
     }
 
+    public boolean finished() {
+        return this.player1.isDead() || this.player2.isDead();
+    }
 
 }

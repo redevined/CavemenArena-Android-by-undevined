@@ -5,22 +5,128 @@
              android:background="@drawable/background">
 
     <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <FrameLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="5">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="0"
+                android:id="@+id/sharpness_counter"
+                android:textColor="#fa911500"
+                android:textStyle="bold"
+                android:textSize="32dp"
+                android:numeric="integer"
+                android:typeface="monospace"
+                android:enabled="false"
+                android:singleLine="false"
+                android:phoneNumber="false"
+                android:password="false"
+                android:gravity="center_horizontal"
+                android:layout_gravity="center" />
+        </FrameLayout>
+
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:baselineAligned="false"
+            android:layout_weight="1">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleX="-1"
+                android:id="@+id/player1"
+                android:layout_weight="1"
+                android:layout_gravity="center_vertical" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/player2"
+                android:layout_weight="1"
+                android:layout_gravity="center_vertical" />
+
+        </LinearLayout>
+
+        <LinearLayout
             android:orientation="horizontal"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:baselineAligned="false">
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:scaleX="-1"
-            android:id="@+id/player1"
-            android:layout_weight="1"
-            android:layout_gravity="center_vertical|right" />
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/player2"
-            android:layout_weight="1"
-            android:layout_gravity="center_vertical|left" />
+            android:layout_weight="5"
+            android:id="@+id/button_layout"
+            android:visibility="visible">
+
+            <Button
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:text="@string/sharpen_button"
+                android:id="@+id/sharpen_button"
+                android:layout_gravity="bottom"
+                android:layout_weight="1"
+                android:onClick="sharpenAction"
+                android:background="#c0d00000"
+                android:textSize="24dp"
+                android:textColor="#ffffff" />
+
+            <Button
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:text="@string/poke_button"
+                android:id="@+id/poke_button"
+                android:layout_gravity="bottom"
+                android:layout_weight="1"
+                android:onClick="pokeAction"
+                android:background="#c0a00000"
+                android:textSize="24dp"
+                android:textColor="#ffffff" />
+
+            <Button
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:text="@string/block_button"
+                android:id="@+id/block_button"
+                android:layout_gravity="bottom"
+                android:layout_weight="1"
+                android:onClick="blockAction"
+                android:background="#c0d00000"
+                android:textSize="24dp"
+                android:textColor="#ffffff" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="5"
+            android:visibility="gone"
+            android:id="@+id/finish_layout">
+
+            <Button
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:id="@+id/finish_button"
+                android:layout_gravity="bottom"
+                android:layout_weight="1"
+                android:background="#c0e00000"
+                android:longClickable="false"
+                android:onClick="exit"
+                android:textSize="20dp"
+                android:textColor="#ffffff" />
+        </LinearLayout>
+
     </LinearLayout>
+
 </FrameLayout>

@@ -25,7 +25,7 @@ public class AI {
             if (hist.size() > 0) {
                 return hist.get(hist.size() - 1);
             } else {
-                return null;
+                return 0;
             }
         }
     }

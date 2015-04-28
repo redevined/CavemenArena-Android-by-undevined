@@ -5,10 +5,13 @@
     <string name="howto_button">How To</string>
 
     <string name="title_activity_game">GameActivity</string>
+    <string name="sharpen_button">S</string>
+    <string name="poke_button">P</string>
+    <string name="block_button">B</string>
+    <string name="win_button">You won!</string>
+    <string name="lose_button">You lost...</string>
 
     <string name="title_activity_how_to">How To</string>
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
 
     <string name="difficultyLevel">Schwierigkeitsstufe</string>
 

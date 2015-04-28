@@ -2,6 +2,7 @@ package cavemenarena.undevined.com.cavemenarena;
 
 import android.graphics.Bitmap;
 
+import cavemenarena.undevined.com.cavemenarena.classes.Actions;
 import cavemenarena.undevined.com.cavemenarena.classes.Cave;
 import cavemenarena.undevined.com.cavemenarena.classes.Caveman;
 import cavemenarena.undevined.com.cavemenarena.classes.Sprites.Sprite;
@@ -9,7 +10,11 @@ import cavemenarena.undevined.com.cavemenarena.util.SystemUiHider;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.KeyEvent;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -119,6 +124,62 @@ public class GameActivity extends Activity {
                 });
         */
 
+    }
+
+    private void checkGameFinish() {
+        if (this.game.finished()) {
+            findViewById(R.id.button_layout).setVisibility(View.GONE);
+            findViewById(R.id.finish_layout).setVisibility(View.VISIBLE);
+
+            int text_id;
+            if (this.game.getPlayer1().isDead()) {
+                text_id = R.string.lose_button;
+            } else {
+                text_id = R.string.win_button;
+            }
+            ((Button)findViewById(R.id.finish_button)).setText(text_id);
+        }
+    }
+
+    private void updateSharpnessCounter() {
+        TextView sharpness_text = (TextView)findViewById(R.id.sharpness_counter);
+        int sharpness = this.game.getPlayer1().getStickSharpness();
+        sharpness_text.setText("" + sharpness);
+    }
+
+    private void triggerAction(int action) {
+        this.game.setPlayerAction(action);
+        this.player1Sprite.animate(action);
+        this.player2Sprite.animate(this.game.getPlayer2().getNextAction());
+
+        this.updateSharpnessCounter();
+        this.checkGameFinish();
+    }
+
+    public void sharpenAction(View v) {
+        triggerAction(Actions.SHARPEN);
+    }
+
+    public void pokeAction(View v) {
+        triggerAction(Actions.POKE);
+    }
+
+    public void blockAction(View v) {
+        triggerAction(Actions.BLOCK);
+    }
+
+    public void exit(View v) {
+        this.spriteTimer.cancel();
+        finish();
+    }
+
+    @Override
+    public boolean onKeyDown(int key, KeyEvent event) {
+        if (key == KeyEvent.KEYCODE_BACK) {
+            this.spriteTimer.cancel();
+            finish();
+        }
+        return super.onKeyDown(key, event);
     }
 
     /*
