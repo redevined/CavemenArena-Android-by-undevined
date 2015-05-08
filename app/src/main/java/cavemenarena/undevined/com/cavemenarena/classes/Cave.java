@@ -113,9 +113,7 @@ public class Cave {
         } else if(!other.weaponIsBlunt()){
             one.loseHealth();
         }
-
         one.sharpenStick();
-
         other.abradeStick();
     }
 
@@ -124,10 +122,10 @@ public class Cave {
     }
 
     private void pokeBlock(Caveman one, Caveman other) {
-        one.abradeStick();
         if (one.stickIsSword()) {
             other.kill();
         }
+        one.abradeStick();
     }
 
     public Caveman getPlayer1() {

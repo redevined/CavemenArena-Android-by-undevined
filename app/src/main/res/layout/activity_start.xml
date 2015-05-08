@@ -4,8 +4,23 @@
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-                    android:id="@+id/startView">
+        android:layout_height="fill_parent">
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/demo_sprite"
+            android:layout_above="@+id/play_button"
+            android:layout_centerHorizontal="true"
+            android:layout_weight="1"
+            android:layout_gravity="center" />
 
         <Button
             android:layout_width="wrap_content"
@@ -17,7 +32,8 @@
             android:textSize="32dp"
             android:width="200sp"
             android:onClick="gotoGame"
-                />
+            android:layout_weight="0.05"
+            android:layout_gravity="center" />
 
         <Button
             android:layout_width="wrap_content"
@@ -30,16 +46,8 @@
             android:textSize="32dp"
             android:width="200sp"
             android:onClick="gotoHowTo"
-            />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/demo_sprite"
-            android:layout_above="@+id/play_button"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="120dp" />
-
-    </RelativeLayout>
+            android:layout_weight="0.05"
+            android:layout_gravity="center" />
+    </LinearLayout>
 
 </FrameLayout>

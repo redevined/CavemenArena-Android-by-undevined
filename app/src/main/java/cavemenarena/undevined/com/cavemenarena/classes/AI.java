@@ -43,9 +43,9 @@ public class AI {
             int action = Actions.SHARPEN;
 
             if (ownSharpness != 0) {
-                if (enemySharpness == 0) {
+                if (enemySharpness == 0 || enemySharpness == 4) {
                     action = Actions.POKE;
-                } else if (enemySharpness > 0 && ownLastMove != 2) {
+                } else if (enemySharpness > 0 && ownLastMove != Actions.BLOCK) {
                     action = Actions.BLOCK;
                 }
             }
@@ -63,59 +63,19 @@ public class AI {
             int ownSharpness = calcSharpness(ownHist);
             int enemySharpness = calcSharpness(enemyHist);
             int ownLastMove = calcLastMove(ownHist);
-            Random randGen = new Random();
-
-            int action = Actions.SHARPEN;
-
-            if (ownSharpness == 0) {
-                if (0 < enemySharpness && enemySharpness < 5) {
-                    if (randGen.nextBoolean()) {
-                        action = Actions.BLOCK;
-                    }
-                }
-            } else if (0 < ownSharpness && ownSharpness < 5){
-                if (randGen.nextBoolean()) {
-                    action = Actions.POKE;
-                }
-                if (0 < enemySharpness && enemySharpness < 5) {
-                    if (ownSharpness < enemySharpness) {
-                        if (randGen.nextBoolean()) {
-                            action = Actions.BLOCK;
-                        }
-                    }
-                }
-            } else if (ownSharpness >= 5) {
-                if (randGen.nextBoolean()) {
-                    action = Actions.POKE;
-                }
-            }
-
-            return action;
-        }
-    }
-
-    /**
-     * Hard AI, highest difficulty
-     */
-    public class HardBrain extends Brain {
-        @Override
-        public int thinkAboutIt(List<Integer> ownHist, List<Integer> enemyHist) {
-            int ownSharpness = calcSharpness(ownHist);
-            int enemySharpness = calcSharpness(enemyHist);
-            int ownLastMove = calcLastMove(ownHist);
 
             int action = Actions.BLOCK;
 
             if (ownHist.size() == 0) {
                 action = Actions.SHARPEN;
-            } else if (ownSharpness > 0 || new Random().nextInt(4) == 0) {
+            } else if (ownSharpness > 0 && new Random().nextInt(4) == 0) {
                 action = Actions.POKE;
             } else if (enemySharpness == 0) {
                 action = Actions.SHARPEN;
             } else if (isStereotype(enemyHist, Actions.BLOCK) && ownLastMove != Actions.SHARPEN) {
                 action = Actions.SHARPEN;
             } else if (enemySharpness == 4 || ownSharpness >= 5) {
-                action = Actions.POKE;
+                action = ownSharpness > 0 ? Actions.POKE : Actions.SHARPEN;
             } else if (isStereotype(enemyHist, Actions.SHARPEN)) {
                 action = Actions.SHARPEN;
             }
@@ -136,23 +96,76 @@ public class AI {
         }
     }
 
+    /**
+     * Hard AI, highest difficulty
+     */
+    public class HardBrain extends Brain {
+        @Override
+        public int thinkAboutIt(List<Integer> ownHist, List<Integer> enemyHist) {
+            int ownSharpness = calcSharpness(ownHist);
+            int enemySharpness = calcSharpness(enemyHist);
+            Random randGen = new Random();
+
+            int action = Actions.SHARPEN;
+
+            if (ownSharpness == 0) {
+                if (enemySharpness == 0 || enemySharpness >= 5) {
+                    action = Actions.SHARPEN;
+                } else {
+                    switch (randGen.nextInt(2)) {
+                        case 0: action = Actions.SHARPEN; break;
+                        case 1: action = Actions.BLOCK; break;
+                    }
+                }
+            } else if (ownSharpness >= 5) {
+                if (enemySharpness == 0 || enemySharpness >= 5) {
+                    switch (randGen.nextInt(2)) {
+                        case 0: action = Actions.SHARPEN; break;
+                        case 1: action = Actions.POKE; break;
+                    }
+                } else {
+                    action = Actions.POKE;
+                }
+            } else {
+                if (enemySharpness == 0 || enemySharpness >= 5) {
+                    switch (randGen.nextInt(2)) {
+                        case 0: action = Actions.SHARPEN; break;
+                        case 1: action =  Actions.POKE; break;
+                    }
+                } else {
+                    switch (randGen.nextInt(3)) {
+                        case 0: action = Actions.SHARPEN; break;
+                        case 1: action = Actions.POKE; break;
+                        case 2: action = Actions.BLOCK; break;
+                    }
+                }
+            }
+
+            return action;
+        }
+    }
+
+    public static final int LEVEL_EASY = 0;
+    public static final int LEVEL_MEDIUM = 1;
+    public static final int LEVEL_HARD = 2;
+
     // Actual AI core
     Brain brain;
     // Just in case...
     boolean becomeSkynet = false;
 
     /**
-     * Constructor chooses AI depending on difficulty level (1 - 3)
+     * Constructor chooses AI depending on difficulty level
      */
     public AI(int iq) {
         switch (iq) {
-            case 1:
+            case LEVEL_EASY:
                 brain = new SimpleBrain();
                 break;
-            case 2:
+            case LEVEL_MEDIUM:
                 brain = new MediumBrain();
                 break;
-            case 3:
+            case LEVEL_HARD:
                 brain = new HardBrain();
                 break;
         }

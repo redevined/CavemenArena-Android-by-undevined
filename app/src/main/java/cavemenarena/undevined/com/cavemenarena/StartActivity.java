@@ -85,9 +85,6 @@ public class StartActivity extends Activity implements OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
 
-        View startView = findViewById(R.id.startView);
-        startView.setVisibility(View.VISIBLE);
-
         sprite = new DemoSprite(getResources());
 
         this.spriteTimer = new Timer();
@@ -168,8 +165,8 @@ public class StartActivity extends Activity implements OnClickListener {
     public void onClick(DialogInterface dialog, int level)
     {
         Intent gameActivityIntent = new Intent(this, GameActivity.class);
-        // Schwierigkeitsstufe (von 1 bis 3) -> 0 ist 1
-        gameActivityIntent.putExtra("level", level + 1);
+        // Schwierigkeitsstufe (von 0 bis 2)
+        gameActivityIntent.putExtra("level", level);
 
         this.startActivity(gameActivityIntent);
     }

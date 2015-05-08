@@ -1382,7 +1382,7 @@ containing a value of this type.
         public static final int collapseActionView=0x7f0a0017;
         public static final int decor_content_parent=0x7f0a002f;
         public static final int default_activity_button=0x7f0a0024;
-        public static final int demo_sprite=0x7f0a006d;
+        public static final int demo_sprite=0x7f0a006a;
         public static final int dialog=0x7f0a001b;
         public static final int disableHome=0x7f0a000c;
         public static final int dropdown=0x7f0a001c;
@@ -1431,7 +1431,6 @@ containing a value of this type.
         public static final int showHome=0x7f0a0010;
         public static final int showTitle=0x7f0a0011;
         public static final int split_action_bar=0x7f0a0007;
-        public static final int startView=0x7f0a006a;
         public static final int submit_area=0x7f0a003c;
         public static final int tabMode=0x7f0a000b;
         public static final int textView=0x7f0a004b;

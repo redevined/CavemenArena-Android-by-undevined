@@ -17,29 +17,31 @@ import cavemenarena.undevined.com.cavemenarena.classes.Caveman;
  */
 public class Sprite {
 
-    Caveman caveman;
-    Caveman caveman2;
     String action;
     int state;
+    int game_status;
+
+    // Variable 'sword' is the displayed state of the stick, 'lazy_sword' the actual stick
+    boolean sword;
+    boolean lazy_sword;
 
     HashMap<String,Bitmap> frames;
 
     /**
-     * Parameterless constructor for inheriting classes.
+     * Parameterless constructor for inheriting classes
      */
     public Sprite() { }
 
     /**
      * Constructor
-     * @param self: Caveman that is resembled by the Sprite
-     * @param other: Caveman's opponent
      * @param resources: Return values of getResources() call
      */
-    public Sprite(Caveman self, Caveman other, Resources resources) {
-        this.caveman = self;
-        this.caveman2 = other;
+    public Sprite(Resources resources) {
         this.action = "idle";
         this.state = 1;
+        this.game_status = 0;
+        this.sword = false;
+        this.lazy_sword = false;
 
         this.frames = loadFrames(resources);
     }
@@ -48,7 +50,7 @@ public class Sprite {
      * Creates HashMap of all frames so the frames can be retrieved and returned in getFrame().
      * Advantage is, that Bitmaps only need to be rendered once.
      */
-    protected HashMap<String,Bitmap> loadFrames(final Resources resources) {
+    protected static HashMap<String,Bitmap> loadFrames(final Resources resources) {
         return new HashMap<String,Bitmap>() {{
             put("idle_1", BitmapFactory.decodeResource(resources, R.drawable.sprite_idle_1));
             put("idle_2", BitmapFactory.decodeResource(resources, R.drawable.sprite_idle_2));
@@ -90,7 +92,7 @@ public class Sprite {
     }
 
     /**
-     * Changes internal state of the Sprite.
+     * Changes internal state and action of the Sprite
      */
     protected void update() {
         this.state++;
@@ -98,13 +100,18 @@ public class Sprite {
         if (Actions.checkActionKey(this.action)) {
             if (this.state > 4) {
                 this.state = 1;
-                if (this.caveman.isDead()) {
-                    this.action = "lost";
-                } else if (this.caveman2.isDead()) {
-                    this.action = "won";
-                } else {
-                    this.action = "idle";
+                switch (this.game_status) {
+                    case -1:
+                        this.action = "lost";
+                        break;
+                    case 0:
+                        this.action = "idle";
+                        break;
+                    case 1:
+                        this.action = "won";
+                        break;
                 }
+                this.sword = this.lazy_sword;
             }
         } else {
             if (this.state > 2) {
@@ -114,24 +121,31 @@ public class Sprite {
     }
 
     /**
-     * Returns current frame.
+     * Returns current frame
      */
     public Bitmap getFrame() {
-        String key = this.action + "_" + (this.caveman.stickIsSword() ? "sword_" : "") + this.state;
+        String key = this.action + "_" + (this.sword ? "sword_" : "") + this.state;
         Bitmap frame = this.frames.get(key);
 
-        //Log.d("Sprite", "[Action: " + this.action + "] [State: " + this.state + "] [Key: " + key +"] [Current Frame: " + frame + "] [Sharpen Frame: " + this.frames.get("sharpen_1") + "]");
         this.update();
         return frame;
     }
 
     /**
-     * Sets next Sprite animation.
-     * Call this method after a button has been pressed and the caveman's action is set.
+     * Sets next Sprite animation
+     * Call this method after a button has been pressed and the caveman's action is set
      */
-    public void animate(int act) {
+    public void animate(int act, boolean has_sword) {
         this.action = Actions.getActionName(act);
         this.state = 1;
+        this.lazy_sword = has_sword;
+    }
+
+    /**
+     * Tells this Sprite that he has either won or lost the game
+     */
+    public void setWinner(boolean won) {
+        this.game_status = won ? 1 : -1;
     }
 
 }

@@ -2,6 +2,7 @@ package cavemenarena.undevined.com.cavemenarena;
 
 import android.graphics.Bitmap;
 
+import cavemenarena.undevined.com.cavemenarena.classes.AI;
 import cavemenarena.undevined.com.cavemenarena.classes.Actions;
 import cavemenarena.undevined.com.cavemenarena.classes.Cave;
 import cavemenarena.undevined.com.cavemenarena.classes.Caveman;
@@ -91,14 +92,14 @@ public class GameActivity extends Activity {
 
         setContentView(R.layout.activity_game);
 
-        int difficulty = getIntent().getIntExtra("level", 1);
+        int difficulty = getIntent().getIntExtra("level", AI.LEVEL_MEDIUM);
 
         this.game = new Cave("Player", "CPU", difficulty);
         Caveman player1 = this.game.getPlayer1();
         Caveman player2 = this.game.getPlayer2();
 
-        this.player1Sprite = new Sprite(player1, player2, getResources());
-        this.player2Sprite = new Sprite(player2, player1, getResources());
+        this.player1Sprite = new Sprite(getResources());
+        this.player2Sprite = new Sprite(getResources());
 
         //Bitmap spritesheet = BitmapFactory.decodeResource(getResources(), R.drawable.spritesheet_caveman_32x32);
         //this.player1Sprite = new CompactSprite(player1, player2, spritesheet);
@@ -130,6 +131,9 @@ public class GameActivity extends Activity {
 
     private void checkGameFinish() {
         if (this.game.finished()) {
+            this.player1Sprite.setWinner(this.game.getPlayer2().isDead());
+            this.player2Sprite.setWinner(this.game.getPlayer1().isDead());
+
             findViewById(R.id.button_layout).setVisibility(View.GONE);
             findViewById(R.id.finish_layout).setVisibility(View.VISIBLE);
 
@@ -150,9 +154,19 @@ public class GameActivity extends Activity {
     }
 
     private void triggerAction(int action) {
+        Caveman player1 = this.game.getPlayer1();
+        Caveman player2 = this.game.getPlayer2();
+
         this.game.setPlayerAction(action);
-        this.player1Sprite.animate(action);
-        this.player2Sprite.animate(this.game.getPlayer2().getNextAction());
+
+        boolean player1sword = player1.stickIsSword();
+        boolean player2sword = player2.stickIsSword();
+
+        int player1action = action;
+        int player2action = player2.getNextAction();
+
+        this.player1Sprite.animate(player1action, player1sword);
+        this.player2Sprite.animate(player2action, player2sword);
 
         this.updateSharpnessCounter();
         this.checkGameFinish();

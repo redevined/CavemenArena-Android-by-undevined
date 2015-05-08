@@ -13,20 +13,16 @@ import java.util.HashMap;
  * Demo Sprite class, shown on the starting page view.
  * Created by redevined on 16.04.15.
  */
-public class DemoSprite extends Sprite {
+public class DemoSprite {
 
     int counter;
     HashMap<String,Bitmap> frames;
 
     public DemoSprite(Resources resources) {
         this.counter = 0;
-        this.frames = loadFrames(resources);
+        this.frames = Sprite.loadFrames(resources);
     }
 
-    @Override
-    protected void update() { }
-
-    @Override
     public Bitmap getFrame() {
         String action = "idle";
         int state = 0;

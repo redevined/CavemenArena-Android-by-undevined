@@ -1,3 +1,4 @@
+/*
 package cavemenarena.undevined.com.cavemenarena.classes.Sprites;
 
 import android.graphics.Bitmap;
@@ -5,16 +6,19 @@ import android.graphics.Bitmap;
 import cavemenarena.undevined.com.cavemenarena.classes.Actions;
 import cavemenarena.undevined.com.cavemenarena.classes.Caveman;
 
+*/
 /**
  * Original Sprite class, uses spritesheet to crop and enlarge actual sprites
  * Created by redevined on 16.04.15.
- */
+ *//*
+
 public class CompactSprite extends Sprite {
 
     Caveman caveman;
     Caveman caveman2;
     String action;
     int state;
+    boolean sword;
 
     Bitmap spritesheet;
     final int dim = 32;
@@ -25,6 +29,7 @@ public class CompactSprite extends Sprite {
         this.caveman2 = other;
         this.action = "idle";
         this.state = 2;
+        this.sword = false;
 
         this.spritesheet = sheet;
     }
@@ -47,7 +52,7 @@ public class CompactSprite extends Sprite {
         } else if (action.equals("sharpen")) {
             y = state <= 2 ? 7 : 8;
         }
-        if (caveman.stickIsSword()) {
+        if (sword) {
             y += 9;
         }
         int x = (state - 1) % 2;
@@ -59,4 +64,4 @@ public class CompactSprite extends Sprite {
         return frame;
     }
 
-}
+}*/
